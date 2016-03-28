@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="bootstrap.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
 </head>
 <body>
   <div class="container">
@@ -10,11 +11,11 @@
       <div class="col-md-4">
         <h2 class="text-center">Level Select</h2>
         <div class="btn-group-vertical center-block">
-          <button type="button" class="btn btn-default">Level 1</button>
-          <button type="button" class="btn btn-default">Level 2</button>
-          <button type="button" class="btn btn-default">Level 3</button>
-          <button type="button" class="btn btn-default">Level 4</button>
-          <button type="button" class="btn btn-default">Level 5</button>
+          <button id="level1" type="button" class="btn btn-default active">Level 1</button>
+          <button id="level2" type="button" class="btn btn-default">Level 2</button>
+          <button id="level3" type="button" class="btn btn-default">Level 3</button>
+          <button id="level4" type="button" class="btn btn-default">Level 4</button>
+          <button id="level5" type="button" class="btn btn-default">Level 5</button>
         </div>
       </div>
       <div class="col-md-8">
@@ -23,8 +24,16 @@
           <canvas class="center-block" width=400 height=400 id="game"></canvas>
         </p>
         <p class="text-center">
-          <button type="button" class="btn btn-primary btn-lg">Upload Log</button>
-          <button type="button" class="btn btn-primary btn-lg">Export Log</button>
+          <!-- Hidden input element that is programatically triggered when
+               the "Upload Log" is clicked. -->
+          <input id="log" class="hidden" type="file" onchange="handleLog(this.files[0])">
+          <button onclick="document.getElementById('log').click()"
+                  type="button" class="btn btn-primary btn-lg">
+            <span class="glyphicon glyphicon-upload"></span> Upload Log
+          </button>
+          <button type="button" class="btn btn-primary btn-lg">
+            <span class="glyphicon glyphicon-download"></span> Export Log
+          </button>
         </p>
       </div>
     </div>

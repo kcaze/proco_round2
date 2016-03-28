@@ -68,6 +68,17 @@ function moveFrog(dir) {
   frog.y = Math.min(currentLevel.height - 1, Math.max(0, frog.y + dy));
 }
 
+function activateLevelButton(level) {
+  var levelElement = document.getElementById(level);
+  levelElement.addEventListener('click', function (e) {
+    for (var level_ in levels) {
+      document.getElementById(level_).className = 'btn btn-default';
+    }
+    e.target.className = 'btn btn-primary active';
+    loadLevel(levels[level]);
+  });
+}
+
 function loadLevel(level) {
   currentLevel = Object.create(level);
   currentLevel.frog = Object.create(frog_prototype);
@@ -98,8 +109,20 @@ function draw() {
   drawEntities();
 }
 
+function handleLog(file) {
+  var fileReader = new FileReader();
+  fileReader.onload = function (e) {
+    var log = e.target.result;
+    // TODO: Does the log file need to be sanitized in some way?
+    log = log.trim();
+    console.log(encodeURI(log));
+    runLog(log);
+  };
+  fileReader.readAsText(file)
+}
+
 function runLog(log) {
-  var lines = log.split('\n');
+  var lines = log.split(/\s+/);
   lines.forEach(function(line) {
     step(line);
   });
@@ -108,13 +131,15 @@ function runLog(log) {
 function step(input) {
   var validInputs = { left:true, up:true, right:true, down:true };
   if (!validInputs[input]) {
-    console.log("Invalid input: " + input + "!");
+    console.log("Invalid input: " + input);
     return;
   }
   moveFrog(input);
 }
 
 /*** Main execution ***/
+for (var level in levels) activateLevelButton(level)
+
 document.addEventListener('keydown', function (e) {
   var keys = { 37:'left', 38:'up', 39:'right', 40:'down' };
 
