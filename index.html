@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="bootstrap.css" media="screen" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Catching Flies</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="text-center">Level Select</h2>
+        <div class="btn-group-vertical center-block">
+          <button type="button" class="btn btn-default">Level 1</button>
+          <button type="button" class="btn btn-default">Level 2</button>
+          <button type="button" class="btn btn-default">Level 3</button>
+          <button type="button" class="btn btn-default">Level 4</button>
+          <button type="button" class="btn btn-default">Level 5</button>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <h2 class="text-center">Game</h2>
+        <p>
+          <canvas class="center-block" width=400 height=400 id="game"></canvas>
+        </p>
+        <p class="text-center">
+          <button type="button" class="btn btn-primary btn-lg">Upload Log</button>
+          <button type="button" class="btn btn-primary btn-lg">Export Log</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Use hidden images to avoid using XHR to load sprites. --> 
+  <img class="hidden" id="img_frog_l" src="images/frog_l.png">
+  <img class="hidden" id="img_frog_u" src="images/frog_u.png">
+  <img class="hidden" id="img_frog_r" src="images/frog_r.png">
+  <img class="hidden" id="img_frog_d" src="images/frog_d.png">
+
+  <script src="main.js"></script>
+</body>
+</html>
