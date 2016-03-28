@@ -16,30 +16,35 @@ var frog_prototype = {
 
 var levels = {
   level1 : {
+              name   : 'level1',
               width  : 5,
               height : 5,
               frog_x : 2,
               frog_y : 2
            },
   level2 : {
+              name   : 'level2',
               width  : 10,
               height : 3,
               frog_x : 0,
               frog_y : 0
            },
   level3 : {
+              name   : 'level3',
               width  : 11,
               height : 11,
               frog_x : 5,
               frog_y : 5
            },
   level4 : {
+              name   : 'level4',
               width  : 11,
               height : 11,
               frog_x : 5,
               frog_y : 5
            },
   level5 : {
+              name   : 'level5',
               width  : 11,
               height : 11,
               frog_x : 5,
@@ -81,6 +86,7 @@ function activateLevelButton(level) {
 
 function loadLevel(level) {
   currentLevel = Object.create(level);
+  currentLevel.log = [];
   currentLevel.frog = Object.create(frog_prototype);
   currentLevel.frog.x = level.frog_x;
   currentLevel.frog.y = level.frog_y;
@@ -109,16 +115,21 @@ function draw() {
   drawEntities();
 }
 
-function handleLog(file) {
+function readLog(file) {
   var fileReader = new FileReader();
   fileReader.onload = function (e) {
     var log = e.target.result;
     // TODO: Does the log file need to be sanitized in some way?
     log = log.trim();
-    console.log(encodeURI(log));
     runLog(log);
   };
   fileReader.readAsText(file)
+}
+
+function exportLog() {
+  var log = currentLevel.log.join('\n');
+  var blob = new Blob([log], {type:'text/plain;charset=utf-8'});
+  saveAs(blob, 'catching_flies_' + currentLevel.name + '_log.txt');
 }
 
 function runLog(log) {
@@ -134,6 +145,7 @@ function step(input) {
     console.log("Invalid input: " + input);
     return;
   }
+  currentLevel.log.push(input);
   moveFrog(input);
 }
 

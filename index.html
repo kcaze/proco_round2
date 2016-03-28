@@ -26,12 +26,13 @@
         <p class="text-center">
           <!-- Hidden input element that is programatically triggered when
                the "Upload Log" is clicked. -->
-          <input id="log" class="hidden" type="file" onchange="handleLog(this.files[0])">
+          <input id="log" class="hidden" type="file" onchange="readLog(this.files[0])">
           <button onclick="document.getElementById('log').click()"
                   type="button" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-upload"></span> Upload Log
           </button>
-          <button type="button" class="btn btn-primary btn-lg">
+          <button onclick="exportLog()"
+                  type="button" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-download"></span> Export Log
           </button>
         </p>
@@ -46,6 +47,7 @@
   <img class="hidden" id="img_frog_r" src="images/frog_r.png">
   <img class="hidden" id="img_frog_d" src="images/frog_d.png">
 
-  <script src="main.js"></script>
+  <script src="js/FileSaver.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
