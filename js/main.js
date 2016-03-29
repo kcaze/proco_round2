@@ -84,6 +84,10 @@ function activateLevelButton(level) {
   });
 }
 
+function resetLevel() {
+  loadLevel(levels[currentLevel.name]);
+}
+
 function loadLevel(level) {
   currentLevel = Object.create(level);
   currentLevel.log = [];
@@ -115,12 +119,19 @@ function draw() {
   drawEntities();
 }
 
-function readLog(file) {
+function clickLog() {
+  document.getElementById('log').click();
+}
+
+function readLog(logElement) {
+  var file = logElement.files[0];
   var fileReader = new FileReader();
   fileReader.onload = function (e) {
+    logElement.value = '';
     var log = e.target.result;
     // TODO: Does the log file need to be sanitized in some way?
     log = log.trim();
+    resetLevel();
     runLog(log);
   };
   fileReader.readAsText(file)
