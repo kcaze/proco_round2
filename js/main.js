@@ -1,77 +1,41 @@
-var canvas = document.getElementById('game');
-var ctx = canvas.getContext('2d');
-
-var consts = {
-  GRID_SIZE : 32,
-  FPS : 60
-}
-
-var frog_prototype = {
-  left : loadImage('img_frog_l'),
-  up : loadImage('img_frog_u'),
-  right : loadImage('img_frog_r'),
-  down : loadImage('img_frog_d'),
-  image : 'up',
-};
-
-var levels = {
-  level1 : {
-              name   : 'level1',
-              width  : 5,
-              height : 5,
-              frog_x : 2,
-              frog_y : 2
-           },
-  level2 : {
-              name   : 'level2',
-              width  : 10,
-              height : 3,
-              frog_x : 0,
-              frog_y : 0
-           },
-  level3 : {
-              name   : 'level3',
-              width  : 11,
-              height : 11,
-              frog_x : 5,
-              frog_y : 5
-           },
-  level4 : {
-              name   : 'level4',
-              width  : 11,
-              height : 11,
-              frog_x : 5,
-              frog_y : 5
-           },
-  level5 : {
-              name   : 'level5',
-              width  : 11,
-              height : 11,
-              frog_x : 5,
-              frog_y : 5
-           },
-};
-
 var currentLevel;
+var moves;
 
-function loadImage(i) {
-  return document.getElementById(i);
+// Generate level buttons
+function generateLevelButtons() {
+  var levelDiv = document.getElementById('levels');
+
+  function onclick(e) {
+    for (var ii = 0; ii < levelDiv.children.length; ii++) {
+      levelDiv.children[ii].className = 'btn btn-default';
+    }
+    e.target.className = 'btn btn-default active';
+
+    currentLevel = game.initializeLevel(e.target.level);
+    drawLevelCanvas(currentLevel);
+  }
+
+  for (var ii = 0; ii < game.levels.length; ii++) {
+    var level = game.levels[ii];
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.id = 'level' + ii.toString(10);
+    button.className = 'btn btn-default';
+    button.innerHTML = level.name;
+    button.level = level;
+    button.addEventListener('click', onclick);
+    levelDiv.appendChild(button);
+  }
 }
 
-function drawEntity(e) {
-  ctx.drawImage(e[e.image], consts.GRID_SIZE * e.x, consts.GRID_SIZE * e.y);
-}
+// Draw
 
-function moveFrog(dir) {
-  var frog = currentLevel.frog;
-  var d = { left:0, up:1, right:2, down:3 }[dir];
-  var dx = [-1, 0, 1, 0][d];
-  var dy = [0, -1, 0, 1][d];
+generateLevelButtons();
 
-  frog.image = dir;
-  frog.x = Math.min(currentLevel.width - 1, Math.max(0, frog.x + dx));
-  frog.y = Math.min(currentLevel.height - 1, Math.max(0, frog.y + dy));
-}
+
+/*
+        <div class="btn-group-vertical center-block">
+
 
 function activateLevelButton(level) {
   var levelElement = document.getElementById(level);
@@ -98,16 +62,6 @@ function loadLevel(level) {
 
 function drawEntities() {
   drawEntity(currentLevel.frog);
-}
-
-function drawGrid() {
-  for (var ii = 0; ii < currentLevel.width; ii++) {
-    for (var jj = 0; jj < currentLevel.height; jj++) {
-      ctx.fillStyle = "green";
-      ctx.fillRect(ii*consts.GRID_SIZE + 1, jj*consts.GRID_SIZE + 1,
-                   consts.GRID_SIZE - 2, consts.GRID_SIZE-2);
-    }
-  }
 }
 
 function draw() {
@@ -160,7 +114,6 @@ function step(input) {
   moveFrog(input);
 }
 
-/*** Main execution ***/
 for (var level in levels) activateLevelButton(level)
 
 document.addEventListener('keydown', function (e) {
@@ -174,4 +127,4 @@ document.addEventListener('keydown', function (e) {
 });
 
 loadLevel(levels.level1);
-window.setInterval(draw, 1000/consts.FPS);
+window.setInterval(draw, 1000/consts.FPS);*/

@@ -8,17 +8,19 @@
   <div class="container">
     <h1 class="text-center">Catching Flies</h1>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <h2 class="text-center">Level Select</h2>
-        <div class="btn-group-vertical center-block">
+        <div id="levels" class="btn-group-vertical center-block">
+          <!--
           <button id="level1" type="button" class="btn btn-default active">Level 1</button>
           <button id="level2" type="button" class="btn btn-default">Level 2</button>
           <button id="level3" type="button" class="btn btn-default">Level 3</button>
           <button id="level4" type="button" class="btn btn-default">Level 4</button>
           <button id="level5" type="button" class="btn btn-default">Level 5</button>
+          -->
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6">
         <h2 class="text-center">Game</h2>
         <p>
           <canvas class="center-block" width=400 height=400 id="game"></canvas>
@@ -37,17 +39,21 @@
           </button>
         </p>
       </div>
+      <div class="col-md-3">
+        <h2 class="text-center">Info</h2>
+        <h3>Score:</h3> <div id="score"></div>
+      </div>
     </div>
   </div>
 
 
   <!-- Use hidden images to avoid using XHR to load sprites. --> 
-  <img class="hidden" id="img_frog_l" src="images/frog_l.png">
-  <img class="hidden" id="img_frog_u" src="images/frog_u.png">
-  <img class="hidden" id="img_frog_r" src="images/frog_r.png">
-  <img class="hidden" id="img_frog_d" src="images/frog_d.png">
+  <img class="hidden" id="img_frog" src="images/frog.png">
+  <img class="hidden" id="img_fly" src="images/fly.png">
 
   <script src="js/FileSaver.min.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/draw.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
