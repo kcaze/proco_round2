@@ -11,10 +11,15 @@ game.levels = [
       y : 2,
       range : 1,
     },
-    flies : [],
+    flies : [
+      {x:0,y:0,move:function() { return {x:0, y:0}; }},
+      {x:4,y:0,move:function() { return {x:4, y:0}; }},
+      {x:0,y:4,move:function() { return {x:0, y:4}; }},
+      {x:4,y:4,move:function() { return {x:4, y:4}; }}
+    ],
     walls: [],
-    score : function (flies, moves) {
-      return flies/(moves+1);
+    scoreFunction : function (flies, moves) {
+      return (flies*flies)/(moves+1);
     }
   },
   {
@@ -28,7 +33,7 @@ game.levels = [
     },
     flies : [],
     walls: [],
-    score : function (flies, moves) {
+    scoreFunction : function (flies, moves) {
       return flies/(moves+1);
     }
   },
@@ -43,7 +48,7 @@ game.levels = [
     },
     flies : [],
     walls: [],
-    score : function (flies, moves) {
+    scoreFunction : function (flies, moves) {
       return flies/(moves+1);
     }
   }
@@ -53,12 +58,27 @@ game.initializeLevel = function (levelPrototype) {
   var level = Object.create(levelPrototype);
 
   // Initialize level variables
-  level.moves = [];
-  level.flies = [];
-  level.frog = Object.create(levelPrototype.frog);
-  levelPrototype.flies.forEach(function (fly) {
-    level.flies.push(Object.create(fly));
-  });
+  function restart() {
+    level.moves = 0;
+    level.flies = [];
+    level.walls = [];
+    level.frog = Object.create(levelPrototype.frog);
+    levelPrototype.flies.forEach(function (fly) {
+      level.flies.push(Object.create(fly));
+    });
+    for (var ii = 0; ii < levelPrototype.height; ii++) {
+      var w = [];
+      for (var jj = 0; jj < levelPrototype.width; jj++) {
+        level.walls.push(false);
+      }
+      level.walls.push(w);
+    }
+    levelPrototype.walls.forEach(function (wall) {
+      level.walls[wall.y][wall.x] = true;
+    });
+    level.fliesCaught = levelPrototype.flies.length - level.flies.length;
+    level.score = levelPrototype.scoreFunction(level.fliesCaught, level.moves);
+  }
 
   // Implement game functions
   function moveFrog(dx, dy) {
@@ -85,11 +105,13 @@ game.initializeLevel = function (levelPrototype) {
 
   function moveFlies() {
     for (var ii = 0; ii < level.flies.length; ii++) {
-      level.flies[ii] = level.flies[ii].move(level);
+      var pos = level.flies[ii].move(level);
+      level.flies[ii].x = pos.x;
+      level.flies[ii].y = pos.y;
     }
   }
 
-  level.step = function (direction) {
+  function step(direction) {
     var d = {left:0, up:1, right:2, down:3, wait:4}[direction];
     var dx = [-1, 0, 1, 0, 0][d];
     var dy = [0, -1, 0, 1, 0][d];
@@ -98,8 +120,20 @@ game.initializeLevel = function (levelPrototype) {
     eatFlies();
     moveFlies();
     eatFlies();
+
+    level.moves++;
+    level.fliesCaught = levelPrototype.flies.length - level.flies.length;
+    level.score = levelPrototype.scoreFunction(level.fliesCaught, level.moves);
   }
 
+  level.runLog = function (log) {
+    restart();
+    log.forEach(function (s) {
+      step(s);
+    });
+  }
+
+  restart();
 
   return level;
 }

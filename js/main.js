@@ -1,8 +1,8 @@
 var currentLevel;
-var moves;
+var log;
 
 // Generate level buttons
-function generateLevelButtons() {
+(function () {
   var levelDiv = document.getElementById('levels');
 
   function onclick(e) {
@@ -12,7 +12,7 @@ function generateLevelButtons() {
     e.target.className = 'btn btn-default active';
 
     currentLevel = game.initializeLevel(e.target.level);
-    drawLevelCanvas(currentLevel);
+    setLog([]);
   }
 
   for (var ii = 0; ii < game.levels.length; ii++) {
@@ -26,55 +26,42 @@ function generateLevelButtons() {
     button.addEventListener('click', onclick);
     levelDiv.appendChild(button);
   }
+})();
+
+// Keyboard controls
+document.addEventListener('keydown', function (e) {
+  var keys = { 37:'left', 38:'up', 39:'right', 40:'down' };
+
+  if (!keys[e.keyCode]) return;
+
+  pushLog(keys[e.keyCode]);
+  e.preventDefault();
+  e.stopPropagation();
+});
+
+// Log functions
+function pushLog(move) {
+  log.push(move);
+  setLog(log);
 }
 
-// Draw
-
-generateLevelButtons();
-
-
-/*
-        <div class="btn-group-vertical center-block">
-
-
-function activateLevelButton(level) {
-  var levelElement = document.getElementById(level);
-  levelElement.addEventListener('click', function (e) {
-    for (var level_ in levels) {
-      document.getElementById(level_).className = 'btn btn-default';
-    }
-    e.target.className = 'btn btn-primary active';
-    loadLevel(levels[level]);
-  });
+function popLog() {
+  log.pop();
+  setLog(log);
 }
 
-function resetLevel() {
-  loadLevel(levels[currentLevel.name]);
-}
+function setLog(newLog) {
+  log = newLog
+  currentLevel.runLog(log);
 
-function loadLevel(level) {
-  currentLevel = Object.create(level);
-  currentLevel.log = [];
-  currentLevel.frog = Object.create(frog_prototype);
-  currentLevel.frog.x = level.frog_x;
-  currentLevel.frog.y = level.frog_y;
-}
-
-function drawEntities() {
-  drawEntity(currentLevel.frog);
-}
-
-function draw() {
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  if (!currentLevel) return;
-  drawGrid();
-  drawEntities();
-}
-
-function clickLog() {
-  document.getElementById('log').click();
+  // Update view
+  drawLevelCanvas(currentLevel);
+  document.getElementById('moves').innerHTML = currentLevel.moves;
+  document.getElementById('fliesCaught').innerHTML = currentLevel.fliesCaught;
+  document.getElementById('score').innerHTML = currentLevel.score;
+  document.getElementById('scoreFunction').innerHTML = currentLevel.scoreFunction.toString();
+  var recentMoves = log.slice(Math.max(log.length-5, 0)).join('<br>');
+  document.getElementById('recentMoves').innerHTML = recentMoves;
 }
 
 function readLog(logElement) {
@@ -82,49 +69,14 @@ function readLog(logElement) {
   var fileReader = new FileReader();
   fileReader.onload = function (e) {
     logElement.value = '';
-    var log = e.target.result;
     // TODO: Does the log file need to be sanitized in some way?
-    log = log.trim();
-    resetLevel();
-    runLog(log);
+    setLog(e.target.result.trim().split(/\s+/));
   };
   fileReader.readAsText(file)
 }
 
 function exportLog() {
-  var log = currentLevel.log.join('\n');
-  var blob = new Blob([log], {type:'text/plain;charset=utf-8'});
+  var logString = log.join('\n');
+  var blob = new Blob([logString], {type:'text/plain;charset=utf-8'});
   saveAs(blob, 'catching_flies_' + currentLevel.name + '_log.txt');
 }
-
-function runLog(log) {
-  var lines = log.split(/\s+/);
-  lines.forEach(function(line) {
-    step(line);
-  });
-}
-
-function step(input) {
-  var validInputs = { left:true, up:true, right:true, down:true };
-  if (!validInputs[input]) {
-    console.log("Invalid input: " + input);
-    return;
-  }
-  currentLevel.log.push(input);
-  moveFrog(input);
-}
-
-for (var level in levels) activateLevelButton(level)
-
-document.addEventListener('keydown', function (e) {
-  var keys = { 37:'left', 38:'up', 39:'right', 40:'down' };
-
-  if (!keys[e.keyCode]) return;
-
-  step(keys[e.keyCode]);
-  e.preventDefault();
-  e.stopPropagation();
-});
-
-loadLevel(levels.level1);
-window.setInterval(draw, 1000/consts.FPS);*/

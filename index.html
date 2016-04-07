@@ -2,7 +2,9 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
+
 </head>
 <body>
   <div class="container">
@@ -29,7 +31,7 @@
           <!-- Hidden input element that is programatically triggered when
                the "Upload Log" is clicked. -->
           <input id="log" class="hidden" type="file" onchange="readLog(this)">
-          <button onclick="clickLog()"
+          <button onclick="document.getElementById('log').click()"
                   type="button" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-upload"></span> Upload Log
           </button>
@@ -37,11 +39,19 @@
                   type="button" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-download"></span> Export Log
           </button>
+          <button onclick="popLog()"
+                  type="button" class="btn btn-primary btn-lg">
+            <span class="fa fa-undo"></span> Undo move
+          </button>
         </p>
       </div>
       <div class="col-md-3">
-        <h2 class="text-center">Info</h2>
+        <h2 class="text-center">Current Level</h2>
+        <h3>Moves:</h3> <div id="moves"></div>
+        <h3>Flies caught:</h3> <div id="fliesCaught"></div>
         <h3>Score:</h3> <div id="score"></div>
+        <h3>Score function:</h3> <div id="scoreFunction"></div>
+        <h3>Last 5 moves:</h3> <div id="recentMoves"></div>
       </div>
     </div>
   </div>

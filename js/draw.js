@@ -21,8 +21,8 @@ function drawEntity(e, x, y) {
 }
 
 function drawGrid(level) {
-  for (var ii = 0; ii < currentLevel.width; ii++) {
-    for (var jj = 0; jj < currentLevel.height; jj++) {
+  for (var ii = 0; ii < level.width; ii++) {
+    for (var jj = 0; jj < level.height; jj++) {
       ctx.fillStyle = "green";
       ctx.fillRect(ii*consts.GRID_SIZE + 1, jj*consts.GRID_SIZE + 1,
                    consts.GRID_SIZE - 2, consts.GRID_SIZE-2);
@@ -34,7 +34,7 @@ return function (level) {
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  drawGrid();
+  drawGrid(level);
   drawEntity('frog', level.frog.x, level.frog.y);
   level.flies.forEach(function(fly) {
     drawEntity('fly', fly.x, fly.y);
