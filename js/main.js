@@ -1,5 +1,6 @@
 var currentLevel;
 var log;
+var logNum;
 
 // Generate level buttons
 (function () {
@@ -50,9 +51,11 @@ function popLog() {
   setLog(log);
 }
 
-function setLog(newLog) {
+function setLog(newLog, newLogNum) {
   log = newLog
-  currentLevel.runLog(log);
+  logNum = newLogNum || log.length;
+
+  currentLevel.runLog(log, logNum);
 
   // Update view
   drawLevelCanvas(currentLevel);
@@ -62,6 +65,11 @@ function setLog(newLog) {
   document.getElementById('scoreFunction').innerHTML = currentLevel.scoreFunction.toString();
   var recentMoves = log.slice(Math.max(log.length-5, 0)).join('<br>');
   document.getElementById('recentMoves').innerHTML = recentMoves;
+
+  document.getElementById('currentMove').innerHTML = logNum;
+  document.getElementById('numMoves').innerHTML = log.length;
+  document.getElementById('moveBar').max = log.length;
+  document.getElementById('moveBar').value = logNum;
 }
 
 function readLog(logElement) {
@@ -79,4 +87,13 @@ function exportLog() {
   var logString = log.join('\n');
   var blob = new Blob([logString], {type:'text/plain;charset=utf-8'});
   saveAs(blob, 'catching_flies_' + currentLevel.name + '_log.txt');
+}
+
+// Movebar code
+function updateMove() {
+  // Dummied out. This is called when the user releases the mouse on the movebar.
+}
+
+function updateMoveBar() {
+  setLog(log, document.getElementById('moveBar').value);
 }

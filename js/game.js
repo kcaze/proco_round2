@@ -126,11 +126,11 @@ game.initializeLevel = function (levelPrototype) {
     level.score = levelPrototype.scoreFunction(level.fliesCaught, level.moves);
   }
 
-  level.runLog = function (log) {
+  level.runLog = function (log, nSteps) {
     restart();
-    log.forEach(function (s) {
-      step(s);
-    });
+    for (var ii = 0; ii < nSteps; ii++) {
+      step(log[ii]);
+    }
   }
 
   restart();
