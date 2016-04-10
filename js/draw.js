@@ -21,10 +21,10 @@ function drawEntity(e, x, y) {
 }
 
 function drawGrid(level) {
-  for (var ii = 0; ii < level.width; ii++) {
-    for (var jj = 0; jj < level.height; jj++) {
-      ctx.fillStyle = "green";
-      ctx.fillRect(ii*consts.GRID_SIZE + 1, jj*consts.GRID_SIZE + 1,
+  for (var xx = 0; xx < level.width; xx++) {
+    for (var yy = 0; yy < level.height; yy++) {
+      ctx.fillStyle = level.walls[yy][xx] ? "gray" : "green";
+      ctx.fillRect(xx*consts.GRID_SIZE + 1, yy*consts.GRID_SIZE + 1,
                    consts.GRID_SIZE - 2, consts.GRID_SIZE-2);
     }
   }
