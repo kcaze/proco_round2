@@ -1,6 +1,12 @@
-game.levels = [
+game.levels = [];
+(function () {
+
+/***************************************/
+/*         Intro (level 1)             */
+/***************************************/
+game.levels.push(
   {
-    name   : 'Level 1',
+    name   : 'Intro',
     width  : 5,
     height : 5,
     frog : {
@@ -23,25 +29,16 @@ game.levels = [
     scoreFunction : function (flies, moves) {
       return (flies*flies)/(moves+1);
     }
-  },
+  }
+);
+
+/***************************************/
+/*      Traffic Light (level 2)        */
+/***************************************/
+var trafficLight = 
   {
-    name   : 'Level 2',
-    width  : 5,
-    height : 5,
-    frog : {
-      x : 2,
-      y : 2,
-      range : 1,
-    },
-    flies : [],
-    walls: [],
-    scoreFunction : function (flies, moves) {
-      return flies/(moves+1);
-    }
-  },
-  {
-    name   : 'Level 3',
-    width  : 5,
+    name   : 'Traffic Light',
+    width  : 12,
     height : 5,
     frog : {
       x : 2,
@@ -54,4 +51,7 @@ game.levels = [
       return flies/(moves+1);
     }
   }
-];
+game.levels.push(trafficLight);
+
+})()
+
