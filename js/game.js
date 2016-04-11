@@ -1,5 +1,5 @@
 var game = (function() {
-var game = {};
+var game = {levels: []};
 
 game.initializeLevel = function (levelPrototype) {
   var level = Object.create(levelPrototype);

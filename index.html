@@ -4,7 +4,6 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
-
 </head>
 <body>
   <div class="container">
@@ -13,13 +12,6 @@
       <div class="col-md-3">
         <h2 class="text-center">Level Select</h2>
         <div id="levels" class="btn-group-vertical center-block">
-          <!--
-          <button id="level1" type="button" class="btn btn-default active">Level 1</button>
-          <button id="level2" type="button" class="btn btn-default">Level 2</button>
-          <button id="level3" type="button" class="btn btn-default">Level 3</button>
-          <button id="level4" type="button" class="btn btn-default">Level 4</button>
-          <button id="level5" type="button" class="btn btn-default">Level 5</button>
-          -->
         </div>
       </div>
       <div class="col-md-6">
@@ -70,8 +62,11 @@
 
   <script src="js/FileSaver.min.js"></script>
   <script src="js/game.js"></script>
-  <script src="js/levels.js"></script>
   <script src="js/draw.js"></script>
+  <!-- Insert levels here, after draw.js, but before main.js -->
+  <script src="levels/template.js"></script>
+  <script src="levels/level01.js"></script>
+  <script src="levels/level02.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
