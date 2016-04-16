@@ -53,7 +53,7 @@ for (var i = 0; i < fliesInfo.length; i++) {
             return {x : this.x + 1, y : this.y};
           }
         }
-        return {x : this.x, y : this.y}
+        return {x : this.x, y : this.y};
       }
     })(fliesInfo.length - i, cur[2])
   });
