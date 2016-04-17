@@ -1,10 +1,10 @@
 (function () {
-/***************************************/
-/*      Traffic Light (level 2)        */
-/***************************************/
+/************************/
+/*      Periodic        */
+/************************/
 var trafficLight = 
   {
-    name   : 'Traffic Light',
+    name   : 'Periodic 1',
     width  : 12,
     height : 9,
     frog : {
