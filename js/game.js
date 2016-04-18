@@ -28,12 +28,12 @@ game.initializeLevel = function (levelPrototype) {
   }
 
   // Implement game functions
-  function moveFrog(dx, dy) {
-    var x = Math.min(level.width - 1, Math.max(0, level.frog.x + dx));
-    var y = Math.min(level.height - 1, Math.max(0, level.frog.y + dy));
-    if (level.walls[y][x]) return;
-    level.frog.x = x;
-    level.frog.y = y;
+  function moveFrog(lvl, dx, dy) {
+    var x = Math.min(lvl.width - 1, Math.max(0, lvl.frog.x + dx));
+    var y = Math.min(lvl.height - 1, Math.max(0, lvl.frog.y + dy));
+    if (lvl.walls[y][x]) return;
+    lvl.frog.x = x;
+    lvl.frog.y = y;
   }
 
   function isEatable(fly) {
@@ -63,7 +63,11 @@ game.initializeLevel = function (levelPrototype) {
     var dx = [-1, 0, 1, 0, 0][d];
     var dy = [0, -1, 0, 1, 0][d];
 
-    moveFrog(dx, dy);
+    if (level.frog.moveFrog) {
+      level.frog.moveFrog(level, dx, dy);
+    } else {
+      moveFrog(level, dx, dy);
+    }
     eatFlies();
     moveFlies();
     eatFlies();

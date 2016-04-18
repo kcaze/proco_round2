@@ -1,7 +1,7 @@
 var drawLevelCanvas = (function() {
 
 var consts = {
-  GRID_SIZE : 32,
+  GRID_SIZE : 16,
 };
 
 var entities = {
