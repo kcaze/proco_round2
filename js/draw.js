@@ -8,8 +8,14 @@ var consts = {
 };
 
 var entities = {
-  frog : loadImage('img_frog'),
-  fly : loadImage('img_fly'),
+  frog_l : loadImage('img_frog_l'),
+  frog_u : loadImage('img_frog_u'),
+  frog_r : loadImage('img_frog_r'),
+  frog_d : loadImage('img_frog_d'),
+  fly_l : loadImage('img_fly_l'),
+  fly_u : loadImage('img_fly_u'),
+  fly_r : loadImage('img_fly_r'),
+  fly_d : loadImage('img_fly_d')
 };
 
 var canvas = document.getElementById('game');
@@ -19,8 +25,9 @@ function loadImage(i) {
   return document.getElementById(i);
 }
 
-function drawEntity(e, x, y, level) {
-  ctx.drawImage(entities[e],
+function drawEntity(e, dir, x, y, level) {
+  dir = dir || 'd';
+  ctx.drawImage(entities[e + '_' + dir],
                 consts.GRID_SIZE * x - consts.GRID_SIZE*level.frog.shiftx,
                 consts.GRID_SIZE * y - consts.GRID_SIZE*level.frog.shifty);
 }
@@ -59,9 +66,9 @@ return function (level) {
     level.frog.shifty = level.frog.y - 2;
   }
   drawGrid(level);
-  drawEntity('frog', level.frog.x, level.frog.y, level);
+  drawEntity('frog', level.frog.direction, level.frog.x, level.frog.y, level);
   level.flies.forEach(function(fly) {
-    drawEntity('fly', fly.x, fly.y, level);
+    drawEntity('fly', fly.direction, fly.x, fly.y, level);
   });
 };
 
