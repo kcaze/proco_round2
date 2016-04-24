@@ -54,25 +54,30 @@ var walk = function(f) {
   if (f[2] == 'R') return [f[0] + 1, f[1]];
 };
 
-var fliesInfo = [];
-for (var i = 0; i < 20; i++) {
-  var fly;
-  do {
-    fly = genFly();
-  } while ((function(x, y){
-    for (var k = 0; k < fliesInfo.length; k++) {
-      if (fliesInfo[k][0] == x && fliesInfo[k][1] == y)
-        return true;
-      var tmp = walk(fly);
-      if (fliesInfo[k][0] == tmp[0] && fliesInfo[k][1] == tmp[1])
-        return true;
-      tmp = walk(fliesInfo[k]);
-      if (tmp[0] == fly[0] && tmp[1] == fly[1])
-        return true;
-    }
-    return false;
-  })(fly[0], fly[1]));
-  fliesInfo.push(fly);
+var fliesInfo = [[3,5,"D"],[6,7,"D"],[3,7,"D"],[7,3,"R"],[6,10,"R"],[0,2,"D"],[2,7,"D"],[3,11,"R"],[0,8,"U"],[6,3,"D"],[11,6,"L"],[4,3,"L"],[6,0,"L"],[1,1,"R"],[5,1,"U"],[1,11,"D"],[8,10,"D"],[0,10,"D"],[1,4,"R"],[4,9,"U"]];
+
+if (fliesInfo.length == 0) {
+  for (var i = 0; i < 20; i++) {
+    var fly;
+    do {
+      fly = genFly();
+    } while ((function(x, y){
+      for (var k = 0; k < fliesInfo.length; k++) {
+        if (fliesInfo[k][0] == x && fliesInfo[k][1] == y)
+      return true;
+    var tmp = walk(fly);
+    if (fliesInfo[k][0] == tmp[0] && fliesInfo[k][1] == tmp[1])
+      return true;
+    tmp = walk(fliesInfo[k]);
+    if (tmp[0] == fly[0] && tmp[1] == fly[1])
+      return true;
+      }
+      return false;
+    })(fly[0], fly[1]));
+    fliesInfo.push(fly);
+  }
+  var blob = new Blob([JSON.stringify(fliesInfo)]);
+  saveAs(blob, "cooperation1.dat");
 }
 
 for (var i = 0; i < fliesInfo.length; i++) {
