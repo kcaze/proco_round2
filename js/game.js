@@ -10,6 +10,8 @@ game.initializeLevel = function (levelPrototype) {
     level.flies = [];
     level.walls = [];
     level.frog = Object.create(levelPrototype.frog);
+    level.frog.shiftx = level.frog.x - 3;
+    level.frog.shifty = level.frog.y - 3;
     levelPrototype.flies.forEach(function (fly) {
       level.flies.push(Object.create(fly));
     });
