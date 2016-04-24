@@ -86,7 +86,7 @@ function readLog(logElement) {
 function exportLog() {
   var logString = log.join('\n');
   var blob = new Blob([logString], {type:'text/plain;charset=utf-8'});
-  saveAs(blob, 'catching_flies_' + currentLevel.name + '_log.txt');
+  saveAs(blob, 'proco_round2_' + currentLevel.name + '_log.txt');
 }
 
 // Movebar code
