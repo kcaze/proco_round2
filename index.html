@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center">Catching Flies</h1>
+    <h1 class="text-center">Round 2: Battle Force Spaceship</h1>
     <div class="row">
       <div class="col-md-3">
         <h2 class="text-center">Level Select</h2>
@@ -20,7 +20,7 @@
       <div class="col-md-6">
         <h2 class="text-center">Game</h2>
         <p>
-          <canvas class="center-block" width=500 height=500 id="game"></canvas>
+          <canvas class="center-block" width=480 height=480 id="game"></canvas>
         </p>
         <p class="text-center">
           <!-- Hidden input element that is programatically triggered when
@@ -60,8 +60,14 @@
 
 
   <!-- Use hidden images to avoid using XHR to load sprites. --> 
-  <img class="hidden" id="img_frog" src="images/frog.png">
-  <img class="hidden" id="img_fly" src="images/fly.png">
+  <img class="hidden" id="img_frog_l" src="images/frog_l.png">
+  <img class="hidden" id="img_frog_u" src="images/frog_u.png">
+  <img class="hidden" id="img_frog_r" src="images/frog_r.png">
+  <img class="hidden" id="img_frog_d" src="images/frog_d.png">
+  <img class="hidden" id="img_fly_l" src="images/fly_l.png">
+  <img class="hidden" id="img_fly_u" src="images/fly_u.png">
+  <img class="hidden" id="img_fly_r" src="images/fly_r.png">
+  <img class="hidden" id="img_fly_d" src="images/fly_d.png">
 
   <script src="js/FileSaver.min.js"></script>
   <script src="js/game.js"></script>

@@ -78,15 +78,23 @@ function readLog(logElement) {
   fileReader.onload = function (e) {
     logElement.value = '';
     // TODO: Does the log file need to be sanitized in some way?
-    setLog(e.target.result.trim().split(/\s+/));
+    var lines = e.target.result.trim().split(/\s+/);
+    for (var ii = 0; ii < lines.length; ii++) {
+      lines[ii] = {'L':'left','U':'up','R':'right','D':'down'}[lines[ii]];
+    }
+    setLog(lines);
   };
   fileReader.readAsText(file)
 }
 
 function exportLog() {
-  var logString = log.join('\n');
+  var log_ = log;
+  for (var ii = 0; ii < log_.length; ii++) {
+    log_[ii] = {'left':'L','up':'U','right':'R','down':'D'}[log_[ii]];
+  }
+  var logString = log_.join('\n');
   var blob = new Blob([logString], {type:'text/plain;charset=utf-8'});
-  saveAs(blob, 'catching_flies_' + currentLevel.name + '_log.txt');
+  saveAs(blob, 'proco_round2_' + currentLevel.name + '_log.txt');
 }
 
 // Movebar code

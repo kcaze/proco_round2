@@ -10,6 +10,8 @@ game.initializeLevel = function (levelPrototype) {
     level.flies = [];
     level.walls = [];
     level.frog = Object.create(levelPrototype.frog);
+    level.frog.shiftx = level.frog.x - 3;
+    level.frog.shifty = level.frog.y - 3;
     levelPrototype.flies.forEach(function (fly) {
       level.flies.push(Object.create(fly));
     });
@@ -53,6 +55,15 @@ game.initializeLevel = function (levelPrototype) {
   function moveFlies() {
     for (var ii = 0; ii < level.flies.length; ii++) {
       var pos = level.flies[ii].move(level);
+      if (pos.x > level.flies[ii].x) {
+        level.flies[ii].direction = 'r';
+      } else if (pos.x < level.flies[ii].x) {
+        level.flies[ii].direction = 'l';
+      } else if (pos.y < level.flies[ii].y) {
+        level.flies[ii].direction = 'u';
+      } else if (pos.y > level.flies[ii].y) {
+        level.flies[ii].direction = 'd';
+      }
       level.flies[ii].x = pos.x;
       level.flies[ii].y = pos.y;
     }
@@ -63,6 +74,7 @@ game.initializeLevel = function (levelPrototype) {
     var dx = [-1, 0, 1, 0, 0][d];
     var dy = [0, -1, 0, 1, 0][d];
 
+    level.frog.direction = direction[0];
     if (level.frog.moveFrog) {
       level.frog.moveFrog(level, dx, dy);
     } else {
