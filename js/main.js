@@ -97,3 +97,6 @@ function updateMove() {
 function updateMoveBar() {
   setLog(log, document.getElementById('moveBar').value);
 }
+
+// Heartbeat
+window.setInterval(function () { if (currentLevel) {drawLevelCanvas(currentLevel);} }, 100);

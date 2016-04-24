@@ -1,7 +1,10 @@
+var wallColor = "#a020f0";
+var tileColor = "#226";
+
 var drawLevelCanvas = (function() {
 
 var consts = {
-  GRID_SIZE : 16,
+  GRID_SIZE : 32,
 };
 
 var entities = {
@@ -23,12 +26,19 @@ function drawEntity(e, x, y) {
 function drawGrid(level) {
   for (var xx = 0; xx < level.width; xx++) {
     for (var yy = 0; yy < level.height; yy++) {
-      ctx.fillStyle = level.walls[yy][xx] ? "gray" : "green";
+      ctx.fillStyle = level.walls[yy][xx] ? wallColor : tileColor;
       ctx.fillRect(xx*consts.GRID_SIZE + 1, yy*consts.GRID_SIZE + 1,
                    consts.GRID_SIZE - 2, consts.GRID_SIZE-2);
     }
   }
 }
+
+document.getElementById('tileColor').addEventListener('change', function() {
+  tileColor = document.getElementById('tileColor').value;
+});
+document.getElementById('wallColor').addEventListener('change', function() {
+  wallColor = document.getElementById('wallColor').value;
+});
 
 return function (level) {
   ctx.fillStyle = 'black';
