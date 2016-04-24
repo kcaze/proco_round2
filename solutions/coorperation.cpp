@@ -30,7 +30,7 @@ void walk(Fly src, Fly des) {
     auto u = Q[i];
     for (int dir = 0; dir < 4; dir ++) {
       Fly v(u.x + Dx[dir], u.y + Dy[dir]);
-      if (inRange(v) && !vis[v.x][v.y] && mp[v.y][u.x] == '.') {
+      if (inRange(v) && !vis[v.x][v.y] && mp[v.x][v.y] == '.') {
         vis[v.x][v.y] = true;
         prev_dir[v.x][v.y] = dir;
         prev_pos[v.x][v.y] = u;
@@ -48,8 +48,8 @@ void walk(Fly src, Fly des) {
 
   for (int i = (int)output.size() - 1; i >= 0; i --) {
     int dir = output[i];
-    if (dir == 0) cout << "U";
-    else if (dir == 1) cout << "D";
+    if (dir == 0) cout << "D";
+    else if (dir == 1) cout << "U";
     else if (dir == 2) cout << "R";
     else cout << "L";
     cout << "\n";
@@ -57,21 +57,25 @@ void walk(Fly src, Fly des) {
 }
 
 int main() {
-  freopen("coop1.in", "r", stdin);
-  freopen("coop1.out", "w", stdout);
+  freopen("cooperation3.txt", "r", stdin);
+  freopen("cooperation3.ans", "w", stdout);
   int frog_x, frog_y;
-  cin >> width >> height >> nfly;
+  cin >> width >> height;
   cin >> frog_x >> frog_y;
   mp = vector<string>(height);
-  for (int i = height - 1; i >= 0; i--)
-    cin >> mp[i];
+  for (int i = height - 1; i >= 0; i--) {
+    mp[i] = string(width, '.');
+  }
+  cin >> nfly;
   vector<Fly> fly(nfly);
   for (int i = 0; i < nfly; i++) {
     char dir;
     cin >> fly[i].x >> fly[i].y >> dir;
-    if (dir == 'D')
+    if (i > 0) 
+      mp[fly[i].x][fly[i].y] = 'X';
+    if (dir == 'U')
       fly[i].y--;
-    else if (dir == 'U')
+    else if (dir == 'D')
       fly[i].y++;
     else if (dir == 'L')
       fly[i].x--;
