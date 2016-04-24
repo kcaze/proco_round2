@@ -2,7 +2,7 @@
 /***************************/
 /*      Ice Emulation      */
 /***************************/
-var n = 20;
+var n = 79;
 var moveFn = function(level) {
   return {x:this.x, y:this.y};
 };
