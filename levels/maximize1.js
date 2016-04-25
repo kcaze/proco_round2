@@ -4,8 +4,8 @@
 /***************************************/
 var maximizeFunction = 
   {
-    name   : 'One-dimensional Problem',
-    width  : 2048,
+    name   : 'Maximize Zone 1',
+    width  : 100,
     height : 3,
     frog : {
       x : 1,
@@ -15,7 +15,8 @@ var maximizeFunction =
     flies : [],
     walls: [],
     scoreFunction : function (flies, moves) {
-      return flies*Math.pow(2, -moves/2048);
+      var x = 2*flies - moves;
+      return -(x*x) + 144*x + 10;
     }
   }
 
@@ -25,9 +26,9 @@ for (var ii = 0; ii < maximizeFunction.width; ii++) {
 }
 maximizeFunction.walls.push({x:0, y:1});
 maximizeFunction.walls.push({x:maximizeFunction.width-1, y:1});
-for (var ii = 1; ii < Math.log2(maximizeFunction.width); ii++) {
+for (var ii = 2; ii < maximizeFunction.width-1; ii++) {
   maximizeFunction.flies.push({
-    x : (1 << ii),
+    x : ii,
     y : 1,
     move : function (level) {
       return {x:this.x, y:this.y};
