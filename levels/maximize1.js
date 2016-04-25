@@ -10,7 +10,7 @@ var maximizeFunction =
     frog : {
       x : 1,
       y : 1,
-      range : 1,
+      range : 0,
     },
     flies : [],
     walls: [],
