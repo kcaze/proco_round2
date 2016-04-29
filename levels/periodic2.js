@@ -5,33 +5,34 @@
 var trafficLight = 
   {
     name   : 'Periodic Zone 2',
-    width  : 12,
-    height : 12,
+    width  : 100,
+    height : 13,
     frog : {
       x : 1,
-      y : 1,
+      y : 6,
       range : 0,
     },
     flies : [],
     walls: [],
     scoreFunction : function (flies, moves, waits) {
-      return 3*flies - moves;
+      return 5*flies - moves;
     }
   }
-function trafficLightFly(dir,x,y) {
-  var ii = {'right':0,'down':1,'left':2,'up':3};
-  var dx = [1,0,-1,0];
-  var dy = [0,1,0,-1];
-  var dd = ['down','left','up','right'];
+function trafficLightFly(period,dir,x,y) {
   return {
     dir:dir,
-    direction:dir[0],
-    x:1+2*x+[0,1,1,0][ii[dir]],
-    y:1+2*y+[0,0,1,1][ii[dir]],
+    curr:0,
+    period:period,
+    direction:dir == 1 ? 'd' : 'u',
+    x:x,
+    y:y,
     move:function (level) {
-      var ret = {x:this.x+dx[ii[this.dir]], y:this.y+dy[ii[this.dir]]};
-      this.dir = dd[ii[this.dir]];
-      return ret;
+      if (this.curr >= this.period) {
+        this.dir *= -1;
+        this.curr = 0;
+      }
+      this.curr++;
+      return {x:this.x, y:this.y+this.dir};
     }
   };
 }
@@ -43,11 +44,10 @@ for (var ii = 1; ii < trafficLight.height-1; ii++) {
   trafficLight.walls.push({x:0, y:ii});
   trafficLight.walls.push({x:trafficLight.width-1, y:ii});
 }
-var directions = ['left', 'up', 'right', 'down'];
-for (var ii = 0; ii < trafficLight.width/2 - 1; ii++) {
-  for (var jj = 0; jj < trafficLight.height/2 - 1; jj++) {
-    trafficLight.flies.push(trafficLightFly(directions[(ii+jj)%4], ii, jj));
-  }
+for (var ii = 2; ii < trafficLight.width-1; ii++) {
+  var period = 2*((ii-2)%3)+2;
+  var dir = ii%2 == 1 ? 1 : -1;
+  trafficLight.flies.push(trafficLightFly(period, dir, ii, 6+period*(-dir)/2));
 }
 game.levels.push(trafficLight);
 })();

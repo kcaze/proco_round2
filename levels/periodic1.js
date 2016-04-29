@@ -28,6 +28,7 @@ var trafficLight =
 function trafficLightFly(dir,x,y) {
   return {
     dir:dir,
+    direction:dir == 1 ? 'r' : 'l',
     x:x,
     y:y,
     move:function (level) {
