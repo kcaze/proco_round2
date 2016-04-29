@@ -13,9 +13,9 @@ var level =
     // Player properties
     frog : {
       // Player's initial x position
-      x : 7,
+      x : 3,
       // Player's initial y position
-      y : 7,
+      y : 4,
       // Range for player's tongue, computed using Manhattan metric
       range : 0,
     },
@@ -24,8 +24,8 @@ var level =
     // List of walls, see below for example wall.
     walls: [],
     // Objective function, takes in number of flies eaten and moves made
-    scoreFunction : function (flies, moves) {
-      return moves - flies;
+    scoreFunction : function (flies, moves, waits) {
+      return flies - (moves - waits);
     },
 
     inMap: function(x, y) {
