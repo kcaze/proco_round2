@@ -20,9 +20,9 @@ bool inRange(Fly t) {
 }
 
 void walk(Fly src, Fly des) { 
-  vector<vector<int>> vis(height, vector<int>(width, 0));
-  vector<vector<Fly>> prev_pos(height, vector<Fly>(width));
-  vector<vector<int>> prev_dir(height, vector<int>(width));
+  vector<vector<int>> vis(width, vector<int>(height, 0));
+  vector<vector<Fly>> prev_pos(width, vector<Fly>(height));
+  vector<vector<int>> prev_dir(width, vector<int>(height));
   vector<Fly> Q;
   Q.push_back(src);
   vis[src.x][src.y] = true;
@@ -57,14 +57,14 @@ void walk(Fly src, Fly des) {
 }
 
 int main() {
-  freopen("cooperation3.txt", "r", stdin);
-  freopen("cooperation3.ans", "w", stdout);
+  freopen("cooperation2.txt", "r", stdin);
+  freopen("cooperation2.ans", "w", stdout);
   int frog_x, frog_y;
   cin >> width >> height;
   cin >> frog_x >> frog_y;
-  mp = vector<string>(height);
-  for (int i = height - 1; i >= 0; i--) {
-    mp[i] = string(width, '.');
+  mp = vector<string>(width);
+  for (int i = width - 1; i >= 0; i--) {
+    mp[i] = string(height, '.');
   }
   cin >> nfly;
   vector<Fly> fly(nfly);
@@ -82,6 +82,6 @@ int main() {
     else if (dir == 'R')
       fly[i].x++;
   }
-  for (int i = 0; i < nfly - 1; i++)
+  for (int i = 0; i < nfly; i++)
     walk(i == 0 ? Fly(frog_x, frog_y) : fly[i - 1], fly[i]);
 }

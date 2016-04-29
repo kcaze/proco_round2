@@ -54,7 +54,7 @@ var walk = function(f) {
   if (f[2] == 'R') return [f[0] + 1, f[1]];
 };
 
-var fliesInfo = [[4,1,"R"],[6,3,"L"],[8,10,"D"],[3,5,"U"],[7,8,"L"],[11,6,"L"],[0,2,"D"],[1,4,"U"],[1,2,"R"],[7,11,"L"],[11,3,"U"],[4,9,"D"],[6,0,"R"],[5,8,"L"],[10,0,"R"],[6,10,"U"],[11,7,"D"],[6,5,"U"],[4,2,"L"],[2,7,"U"]];
+var fliesInfo = [[4,1,"X"],[6,3,"L"],[8,10,"D"],[3,5,"U"],[7,8,"L"],[11,6,"L"],[0,2,"D"],[1,4,"U"],[1,2,"R"],[7,11,"L"],[11,3,"U"],[4,9,"D"],[6,0,"R"],[5,8,"L"],[10,0,"R"],[6,10,"U"],[11,7,"D"],[6,5,"U"],[4,2,"L"],[2,7,"U"]];
 
 if (fliesInfo.length == 0) {
   for (var i = 0; i < 20; i++) {
@@ -76,6 +76,7 @@ if (fliesInfo.length == 0) {
     })(fly[0], fly[1]));
     fliesInfo.push(fly);
   }
+  fliesInfo[0][2] = 'X';
   var blob = new Blob([JSON.stringify(fliesInfo)]);
   saveAs(blob, "cooperation1.json");
   var input = "";
