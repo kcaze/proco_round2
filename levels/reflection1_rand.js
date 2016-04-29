@@ -7,15 +7,15 @@ var level =
     // Level name
     name   : 'Reflection 1',
     // Width of level in tiles
-    width  : 12,
+    width  : 10,
     // Height of level in tiles
-    height : 12,
+    height : 10,
     // Player properties
     frog : {
       // Player's initial x position
-      x : 7,
+      x : 2,
       // Player's initial y position
-      y : 7,
+      y : 2,
       // Range for player's tongue, computed using Manhattan metric
       range : 0,
     },
@@ -86,19 +86,16 @@ var fliesInfo = [];
 
 var wallsInfo = [];
 
-function addLineWall(k, b) {
-  var y = b;
-  for (var x = 0; x < level.width; x++, y = y + k) {
-    if (level.inMap(x, y))
-      wallsInfo.push([x,y]);
+for (var i = 0; i < 30; i++) {
+  while (true) {
+    var x = getRandomInt(0, level.width);
+    var y = getRandomInt(0, level.height);
+    if (x != level.frog.x && y != level.frog.y) {
+      wallsInfo.push([x, y]);
+      break;
+    }
   }
 }
-
-addLineWall(1, 7);
-addLineWall(-1, 6);
-addLineWall(1, -7);
-addLineWall(-1, 16);
-
 for (var i = 0; i < 10; i++) {
   var fly;
   do {
