@@ -17,7 +17,7 @@ var maximizeFunction =
     scoreFunction : function (flies, moves) {
       var mod = Math.floor(Math.pow(2, flies));
       var x = moves%mod + mod;
-      return Math.sin(x);
+      return Math.tan(x);
     }
   }
 
