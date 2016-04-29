@@ -27,7 +27,7 @@ game.initializeLevel = function (levelPrototype) {
       level.walls[wall.y][wall.x] = true;
     });
     level.fliesCaught = levelPrototype.flies.length - level.flies.length;
-    level.score = levelPrototype.scoreFunction(level.fliesCaught, level.moves);
+    level.score = levelPrototype.scoreFunction(level.fliesCaught, level.moves, level.waits);
   }
 
   // Implement game functions
@@ -92,7 +92,7 @@ game.initializeLevel = function (levelPrototype) {
       level.waits++;
     }
     level.fliesCaught = levelPrototype.flies.length - level.flies.length;
-    level.score = levelPrototype.scoreFunction(level.fliesCaught, level.moves);
+    level.score = levelPrototype.scoreFunction(level.fliesCaught, level.moves, level.waits);
   }
 
   level.runLog = function (log, nSteps) {
