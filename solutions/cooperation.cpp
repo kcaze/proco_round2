@@ -20,9 +20,9 @@ bool inRange(Fly t) {
 }
 
 void walk(Fly src, Fly des) { 
-  vector<vector<int>> vis(height, vector<int>(width, 0));
-  vector<vector<Fly>> prev_pos(height, vector<Fly>(width));
-  vector<vector<int>> prev_dir(height, vector<int>(width));
+  vector<vector<int>> vis(width, vector<int>(height, 0));
+  vector<vector<Fly>> prev_pos(width, vector<Fly>(height));
+  vector<vector<int>> prev_dir(width, vector<int>(height));
   vector<Fly> Q;
   Q.push_back(src);
   vis[src.x][src.y] = true;
@@ -30,7 +30,7 @@ void walk(Fly src, Fly des) {
     auto u = Q[i];
     for (int dir = 0; dir < 4; dir ++) {
       Fly v(u.x + Dx[dir], u.y + Dy[dir]);
-      if (inRange(v) && !vis[v.x][v.y] && mp[v.y][u.x] == '.') {
+      if (inRange(v) && !vis[v.x][v.y] && mp[v.x][v.y] == '.') {
         vis[v.x][v.y] = true;
         prev_dir[v.x][v.y] = dir;
         prev_pos[v.x][v.y] = u;
@@ -48,8 +48,8 @@ void walk(Fly src, Fly des) {
 
   for (int i = (int)output.size() - 1; i >= 0; i --) {
     int dir = output[i];
-    if (dir == 0) cout << "U";
-    else if (dir == 1) cout << "D";
+    if (dir == 0) cout << "D";
+    else if (dir == 1) cout << "U";
     else if (dir == 2) cout << "R";
     else cout << "L";
     cout << "\n";
@@ -57,27 +57,31 @@ void walk(Fly src, Fly des) {
 }
 
 int main() {
-  freopen("coop1.in", "r", stdin);
-  freopen("coop1.out", "w", stdout);
+  freopen("cooperation2.txt", "r", stdin);
+  freopen("cooperation2.ans", "w", stdout);
   int frog_x, frog_y;
-  cin >> width >> height >> nfly;
+  cin >> width >> height;
   cin >> frog_x >> frog_y;
-  mp = vector<string>(height);
-  for (int i = height - 1; i >= 0; i--)
-    cin >> mp[i];
+  mp = vector<string>(width);
+  for (int i = width - 1; i >= 0; i--) {
+    mp[i] = string(height, '.');
+  }
+  cin >> nfly;
   vector<Fly> fly(nfly);
   for (int i = 0; i < nfly; i++) {
     char dir;
     cin >> fly[i].x >> fly[i].y >> dir;
-    if (dir == 'D')
+    if (i > 0) 
+      mp[fly[i].x][fly[i].y] = 'X';
+    if (dir == 'U')
       fly[i].y--;
-    else if (dir == 'U')
+    else if (dir == 'D')
       fly[i].y++;
     else if (dir == 'L')
       fly[i].x--;
     else if (dir == 'R')
       fly[i].x++;
   }
-  for (int i = 0; i < nfly - 1; i++)
+  for (int i = 0; i < nfly; i++)
     walk(i == 0 ? Fly(frog_x, frog_y) : fly[i - 1], fly[i]);
 }
