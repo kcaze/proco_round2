@@ -65,6 +65,8 @@ return function (level) {
   } else if (level.frog.y < level.frog.shifty + 2) {
     level.frog.shifty = level.frog.y - 2;
   }
+  level.frog.shiftx = Math.max(0, Math.min(level.frog.shiftx, level.width - 15));
+  level.frog.shifty = Math.max(0, Math.min(level.frog.shifty, level.height - 15));
   drawGrid(level);
   drawEntity('frog', level.frog.direction, level.frog.x, level.frog.y, level);
   level.flies.forEach(function(fly) {

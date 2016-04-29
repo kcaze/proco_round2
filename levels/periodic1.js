@@ -4,13 +4,13 @@
 /************************/
 var trafficLight = 
   {
-    name   : 'Periodic 1',
+    name   : 'Periodic Zone 1',
     width  : 12,
     height : 9,
     frog : {
       x : 5,
       y : 7,
-      range : 1,
+      range : 0,
     },
     flies : [],
     walls: [
@@ -21,13 +21,14 @@ var trafficLight =
       {x:1,y:5}, {x:2,y:5}, {x:3,y:5}, {x:9,y:5}, {x:10,y:5},
       {x:7,y:6}, {x:8,y:6}, {x:9,y:6}, {x:10,y:6},
     ],
-    scoreFunction : function (flies, moves) {
-      return flies/(moves+1);
+    scoreFunction : function (flies, moves, waits) {
+      return (flies*flies)/(moves-waits+1);
     }
   }
 function trafficLightFly(dir,x,y) {
   return {
     dir:dir,
+    direction:dir == 1 ? 'r' : 'l',
     x:x,
     y:y,
     move:function (level) {
