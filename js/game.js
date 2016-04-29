@@ -95,6 +95,7 @@ game.initializeLevel = function (levelPrototype) {
       step(log[ii]);
     }
   }
+  level.step = step;
 
   restart();
 

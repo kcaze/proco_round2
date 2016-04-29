@@ -43,7 +43,22 @@ document.addEventListener('keydown', function (e) {
 // Log functions
 function pushLog(move) {
   log.push(move);
-  setLog(log);
+  //setLog(log);
+  logNum = log.length;
+  currentLevel.step(log[log.length-1]);
+  // Update view
+  drawLevelCanvas(currentLevel);
+  document.getElementById('moves').innerHTML = currentLevel.moves;
+  document.getElementById('fliesCaught').innerHTML = currentLevel.fliesCaught;
+  document.getElementById('score').innerHTML = currentLevel.score;
+  document.getElementById('scoreFunction').innerHTML = currentLevel.scoreFunction.toString();
+  var recentMoves = log.slice(Math.max(log.length-5, 0)).join('<br>');
+  document.getElementById('recentMoves').innerHTML = recentMoves;
+
+  document.getElementById('currentMove').innerHTML = logNum;
+  document.getElementById('numMoves').innerHTML = log.length;
+  document.getElementById('moveBar').max = log.length;
+  document.getElementById('moveBar').value = logNum;
 }
 
 function popLog() {
