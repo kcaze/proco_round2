@@ -31,7 +31,7 @@ var logNum;
 
 // Keyboard controls
 document.addEventListener('keydown', function (e) {
-  var keys = { 37:'left', 38:'up', 39:'right', 40:'down' };
+  var keys = { 32:'wait', 37:'left', 38:'up', 39:'right', 40:'down' };
 
   if (!keys[e.keyCode]) return;
 
@@ -49,6 +49,7 @@ function pushLog(move) {
   // Update view
   drawLevelCanvas(currentLevel);
   document.getElementById('moves').innerHTML = currentLevel.moves;
+  document.getElementById('waits').innerHTML = currentLevel.waits;
   document.getElementById('fliesCaught').innerHTML = currentLevel.fliesCaught;
   document.getElementById('score').innerHTML = currentLevel.score;
   document.getElementById('scoreFunction').innerHTML = currentLevel.scoreFunction.toString();
@@ -75,6 +76,7 @@ function setLog(newLog, newLogNum) {
   // Update view
   drawLevelCanvas(currentLevel);
   document.getElementById('moves').innerHTML = currentLevel.moves;
+  document.getElementById('waits').innerHTML = currentLevel.waits;
   document.getElementById('fliesCaught').innerHTML = currentLevel.fliesCaught;
   document.getElementById('score').innerHTML = currentLevel.score;
   document.getElementById('scoreFunction').innerHTML = currentLevel.scoreFunction.toString();
@@ -95,7 +97,7 @@ function readLog(logElement) {
     // TODO: Does the log file need to be sanitized in some way?
     var lines = e.target.result.trim().split(/\s+/);
     for (var ii = 0; ii < lines.length; ii++) {
-      lines[ii] = {'L':'left','U':'up','R':'right','D':'down'}[lines[ii]];
+      lines[ii] = {'L':'left','U':'up','R':'right','D':'down','W':'wait'}[lines[ii]];
     }
     setLog(lines);
   };
@@ -105,7 +107,7 @@ function readLog(logElement) {
 function exportLog() {
   var log_ = log;
   for (var ii = 0; ii < log_.length; ii++) {
-    log_[ii] = {'left':'L','up':'U','right':'R','down':'D'}[log_[ii]];
+    log_[ii] = {'left':'L','up':'U','right':'R','down':'D','wait':'W'}[log_[ii]];
   }
   var logString = log_.join('\n');
   var blob = new Blob([logString], {type:'text/plain;charset=utf-8'});

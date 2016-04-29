@@ -7,6 +7,7 @@ game.initializeLevel = function (levelPrototype) {
   // Initialize level variables
   function restart() {
     level.moves = 0;
+    level.waits = 0;
     level.flies = [];
     level.walls = [];
     level.frog = Object.create(levelPrototype.frog);
@@ -74,7 +75,9 @@ game.initializeLevel = function (levelPrototype) {
     var dx = [-1, 0, 1, 0, 0][d];
     var dy = [0, -1, 0, 1, 0][d];
 
-    level.frog.direction = direction[0];
+    if (direction != 'wait') {
+      level.frog.direction = direction[0];
+    }
     if (level.frog.moveFrog) {
       level.frog.moveFrog(level, dx, dy);
     } else {
@@ -85,6 +88,9 @@ game.initializeLevel = function (levelPrototype) {
     eatFlies();
 
     level.moves++;
+    if (direction == 'wait') {
+      level.waits++;
+    }
     level.fliesCaught = levelPrototype.flies.length - level.flies.length;
     level.score = levelPrototype.scoreFunction(level.fliesCaught, level.moves);
   }
