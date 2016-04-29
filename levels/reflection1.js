@@ -82,34 +82,49 @@ var rightdir = {
   'R' : 'D',
 };
 
-var fliesInfo = [];
+var wallsInfo = [[0,7],[1,8],[2,9],[3,10],[4,11],[0,6],[1,5],[2,4],[3,3],[4,2],[5,1],[6,0],[7,0],[8,1],[9,2],[10,3],[11,4],[5,11],[6,10],[7,9],[8,8],[9,7],[10,6],[11,5]];
 
-var wallsInfo = [];
+var fliesInfo = [[4,6,"R"],[8,0,"L"],[9,8,"R"],[8,3,"L"],[4,4,"U"],[3,1,"L"],[1,4,"D"],[1,6,"U"],[9,5,"D"],[10,9,"L"]];
 
-function addLineWall(k, b) {
-  var y = b;
-  for (var x = 0; x < level.width; x++, y = y + k) {
-    if (level.inMap(x, y))
-      wallsInfo.push([x,y]);
+if (wallsInfo.length == 0) {
+  function addLineWall(k, b) {
+    var y = b;
+    for (var x = 0; x < level.width; x++, y = y + k) {
+      if (level.inMap(x, y))
+        wallsInfo.push([x,y]);
+    }
   }
-}
 
-addLineWall(1, 7);
-addLineWall(-1, 6);
-addLineWall(1, -7);
-addLineWall(-1, 16);
+  addLineWall(1, 7);
+  addLineWall(-1, 6);
+  addLineWall(1, -7);
+  addLineWall(-1, 16);
 
-for (var i = 0; i < 10; i++) {
-  var fly;
-  do {
-    fly = genFly();
-  } while ((function(x, y) {
-    for (var k = 0; k < wallsInfo.length; k++)
+  for (var i = 0; i < 10; i++) {
+    var fly;
+    do {
+      fly = genFly();
+    } while ((function(x, y) {
+      for (var k = 0; k < wallsInfo.length; k++)
       if (wallsInfo[k][0] == x && wallsInfo[k][1] == y)
-        return true;
+      return true;
     return false;
-  })(fly[0], fly[1]));
-  fliesInfo.push(fly);
+    })(fly[0], fly[1]));
+    fliesInfo.push(fly);
+  }
+
+  var blob = new Blob([JSON.stringify(wallsInfo), '\n', JSON.stringify(fliesInfo)]);
+  saveAs(blob, "reflection1.json");
+  var input = "";
+  input = input.concat("{0} {1}\n".format(level.width, level.height));
+  input = input.concat("{0} {1}\n".format(level.frog.x, level.frog.y));
+  input = input.concat("{0}\n".format(wallsInfo.length));
+  for (var i = 0; i < wallsInfo.length; i++)
+    input = input.concat("{0} {1}\n".format(wallsInfo[i][0], wallsInfo[i][1]));
+  input = input.concat("{0}\n".format(fliesInfo.length));
+  for (var i = 0; i < fliesInfo.length; i++)
+    input = input.concat("{0} {1} {2}\n".format(fliesInfo[i][0], fliesInfo[i][1], fliesInfo[i][2]));
+  saveAs(new Blob([input]), "reflection1.txt");
 }
 
 for (var i = 0; i < fliesInfo.length; i++) {
