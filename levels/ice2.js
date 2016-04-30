@@ -8,7 +8,7 @@ var moveFn = function(level) {
 };
 var ice = 
   {
-    name   : 'Ice Zone 2',
+    name   : 'Ice Zone Level 2',
     width  : n,
     height : n,
     frog : {

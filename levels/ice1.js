@@ -4,7 +4,7 @@
 /***************************/
 var ice = 
   {
-    name   : 'Ice Zone 1',
+    name   : 'Ice Zone Level 1',
     width  : 16,
     height : 14,
     frog : {

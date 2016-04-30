@@ -5,7 +5,7 @@
 var level = 
   {
     // Level name
-    name   : 'Reflection 1',
+    name   : 'Reflection Zone Level 1',
     // Width of level in tiles
     width  : 12,
     // Height of level in tiles

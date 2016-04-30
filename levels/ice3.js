@@ -5,7 +5,7 @@
 function flymove() { return {x:this.x, y:this.y}; }
 var ice = 
   {
-    name   : 'Ice Zone 3',
+    name   : 'Ice Zone Level 3',
     width  : 100,
     height : 100,
     frog : {

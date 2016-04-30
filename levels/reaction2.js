@@ -6,7 +6,7 @@
 var level = 
   {
     // Level name
-    name   : 'Reaction Zone 2',
+    name   : 'Reaction Zone Level 2',
     // Width of level in tiles
     width  : 12,
     // Height of level in tiles
