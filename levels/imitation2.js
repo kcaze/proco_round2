@@ -5,7 +5,7 @@
 var level = 
   {
     // Level name
-    name   : 'Emulation Zone Level 2',
+    name   : 'Imitation Zone Level 2',
     // Width of level in tiles
     width  : 200,
     // Height of level in tiles
@@ -67,7 +67,7 @@ if (wallsInfo.length == 0) {
   level.frog.y = level.height / 2 - 1;
 
   var blob = new Blob([JSON.stringify(wallsInfo), '\n', JSON.stringify(fliesInfo)]);
-  saveAs(blob, "emulation2.json");
+  saveAs(blob, "imitation2.json");
   var input = "";
   input = input.concat("{0} {1}\n".format(level.width, level.height));
   input = input.concat("{0} {1}\n".format(level.frog.x, level.frog.y));
@@ -77,7 +77,7 @@ if (wallsInfo.length == 0) {
   input = input.concat("{0}\n".format(fliesInfo.length));
   for (var i = 0; i < fliesInfo.length; i++)
     input = input.concat("{0} {1}\n".format(fliesInfo[i][0], fliesInfo[i][1]));
-  saveAs(new Blob([input]), "emulation2.txt");
+  saveAs(new Blob([input]), "imitation2.txt");
 }
 console.log(fliesInfo.length);
 for (var i = 0; i < fliesInfo.length; i++) {
