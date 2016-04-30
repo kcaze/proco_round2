@@ -79,7 +79,6 @@ if (wallsInfo.length == 0) {
     input = input.concat("{0} {1}\n".format(fliesInfo[i][0], fliesInfo[i][1]));
   saveAs(new Blob([input]), "imitation2.txt");
 }
-console.log(fliesInfo.length);
 for (var i = 0; i < fliesInfo.length; i++) {
   var cur = fliesInfo[i];
   level.flies.push({

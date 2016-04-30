@@ -77,7 +77,8 @@ game.initializeLevel = function (levelPrototype) {
 
     if (direction != 'wait') {
       level.frog.direction = direction[0];
-    }
+   }
+
     if (level.frog.moveFrog) {
       level.frog.moveFrog(level, dx, dy);
     } else {
