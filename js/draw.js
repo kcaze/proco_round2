@@ -68,7 +68,7 @@ return function (level) {
   level.frog.shiftx = Math.max(0, Math.min(level.frog.shiftx, level.width - 15));
   level.frog.shifty = Math.max(0, Math.min(level.frog.shifty, level.height - 15));
   drawGrid(level);
-  drawEntity('frog', level.frog.direction, level.frog.x, level.frog.y, level);
+  drawEntity('frog', level.frog.drawDirection, level.frog.x, level.frog.y, level);
   level.flies.forEach(function(fly) {
     drawEntity('fly', fly.direction, fly.x, fly.y, level);
   });

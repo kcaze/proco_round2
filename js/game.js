@@ -95,9 +95,10 @@ game.initializeLevel = function (levelPrototype) {
     var dx = [-1, 0, 1, 0, 0][d];
     var dy = [0, -1, 0, 1, 0][d];
 
+    level.frog.direction = direction[0];
     if (direction != 'wait') {
-      level.frog.direction = direction[0];
-   }
+      level.frog.drawDirection = level.frog.direction;
+    }
 
     var prevx = level.frog.x;
     var prevy = level.frog.y;
