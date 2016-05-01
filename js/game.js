@@ -39,15 +39,35 @@ game.initializeLevel = function (levelPrototype) {
     lvl.frog.y = y;
   }
 
-  function isEatable(fly) {
-    var dist = Math.abs(fly.x - level.frog.x) + Math.abs(fly.y - level.frog.y);
-    return dist <= level.frog.range;
+  function isEatable(fly, prevx, prevy, currx, curry) {
+    var tmp = Math.max(prevx, currx);
+    prevx = Math.min(prevx, currx);
+    currx = tmp;
+    tmp = Math.max(prevy, curry);
+    prevy = Math.min(prevy, curry);
+    curry = tmp;
+
+    var x = prevx;
+    var y = prevy;
+    var dx = currx == prevx ? 0 : 1;
+    var dy = curry == prevy ? 0 : 1;
+
+    while (x <= currx && y <= curry) {
+      var dist = Math.abs(fly.x - x) + Math.abs(fly.y - y);
+      if (dist <= level.frog.range) {
+        return true;
+      }
+      if (dx == 0 && dy == 0) break;
+      x += dx;
+      y += dy;
+    }
+    return false;
   }
 
-  function eatFlies() {
+  function eatFlies(prevx, prevy, currx, curry) {
     var flies = [];
     level.flies.forEach(function (fly) {
-      if (isEatable(fly)) return;
+      if (isEatable(fly, prevx, prevy, currx, curry)) return;
       flies.push(fly);
     });
     level.flies = flies;
@@ -79,14 +99,18 @@ game.initializeLevel = function (levelPrototype) {
       level.frog.direction = direction[0];
    }
 
+    var prevx = level.frog.x;
+    var prevy = level.frog.y;
     if (level.frog.moveFrog) {
       level.frog.moveFrog(level, dx, dy);
     } else {
       moveFrog(level, dx, dy);
     }
-    eatFlies();
+    var currx = level.frog.x;
+    var curry = level.frog.y;
+    eatFlies(prevx, prevy, currx, curry);
     moveFlies();
-    eatFlies();
+    eatFlies(currx, curry, currx, curry);
 
     level.moves++;
     if (direction == 'wait') {
