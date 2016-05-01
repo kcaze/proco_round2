@@ -4,7 +4,7 @@
 /************************/
 var trafficLight = 
   {
-    name   : 'Periodic Zone Level 3',
+    name   : 'Periodicity Zone Level 3',
     width  : 100,
     height : 100,
     frog : {
