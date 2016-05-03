@@ -4,7 +4,7 @@
 /***************************************/
 var maximizeFunction = 
   {
-    name   : 'Maximize Zone Level 3',
+    name   : 'Maximization Zone Level 3',
     width  : 6,
     height : 6,
     frog : {
