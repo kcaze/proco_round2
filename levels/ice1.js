@@ -27,7 +27,7 @@ var ice =
       {x:10,y:11}
     ],
     scoreFunction : function (flies, moves) {
-      return 20*(flies*flies)/(moves+1);
+      return Math.pow(flies, 5)/(moves+1);
     }
   }
 
