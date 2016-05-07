@@ -45,10 +45,13 @@ public:
 
   void close() {fclose(f);}
   bool isNull() {return f == NULL;}
-  char readChar(bool ignoreWhiteSpace = 1) {
+  char readChar(bool ignoreWhiteSpace = true) {
     char c;
-    if (ignoreWhiteSpace) fscanf(f, " %c", &c);
-    else fscanf(f, "%c", &c);
+    if (ignoreWhiteSpace) {
+      fscanf(f, " %c ", &c);
+    } else {
+      fscanf(f, "%c", &c);
+    }
     if (!validDirection(c)) {
       endProgram(0);
     }
@@ -66,15 +69,14 @@ public:
 FileReader ouf, ans;
 FILE *inf;
 
-int DX[5] = {-1, 0, 0, 1, 0};
-int DY[5] = {0, -1, 1, 0, 0};
+int DX[5] = {-1, 0, 1, 0, 0};
+int DY[5] = {0, -1, 0, 1, 0};
 
 void init(int argc, char * argv[]) {
   assert(argc == 4);
   inf = fopen(argv[1], "r");
   ouf = FileReader(argv[2]);
   ans = FileReader(argv[3]);
-  ans.readChar();
 }
 
 void endProgram(double score) {
