@@ -53,7 +53,9 @@ var exampleWall = {
 };
 
 exampleLevel.flies.push(exampleFly);
-exampleLevel.walls.push(exampleWall);
+exampleLevel.walls.push({x:1,y:2});
+exampleLevel.walls.push({x:2,y:1});
+exampleLevel.walls.push({x:3,y:2});
 
 game.levels.push(exampleLevel);
 })();

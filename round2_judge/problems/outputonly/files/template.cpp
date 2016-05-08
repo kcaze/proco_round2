@@ -30,24 +30,6 @@ int fliesCaught = 0;
 int moves = 0;
 int waits = 0;
 
-bool validDirection(char c) {
-  return c == 'L' || c == 'U' || c == 'R' || c == 'D' || c == 'W';
-}
-
-int directionToIndex(char c) {
-  if (c == 'L') {
-    return 0;
-  } else if (c == 'U') {
-    return 1;
-  } else if (c == 'R') {
-    return 2;
-  } else if (c == 'D') {
-    return 3;
-  } else {
-    return 4;
-  }
-}
-
 bool validPosition(int x, int y) {
   for (int ii = 0; ii < nWalls; ii++) {
     if (walls[ii][0] == x && walls[ii][1] == y) return false;
@@ -80,11 +62,9 @@ int main(int argc, char *argv[]) {
     }
 
     int index = directionToIndex(c);
-    int dx[5] = {-1, 0, 0, 1, 0};
-    int dy[5] = {0, -1, 1, 0, 0};
-    if (validPosition(shipx + dx[index], shipy + dy[index])) {
-      shipx += dx[index];
-      shipy += dy[index];
+    if (validPosition(shipx + DX[index], shipy + DY[index])) {
+      shipx += DX[index];
+      shipy += DY[index];
     }
     eatFlies();
     moves++;
@@ -92,4 +72,3 @@ int main(int argc, char *argv[]) {
   }
   endProgram(computeScore());
 }
-
