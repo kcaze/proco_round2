@@ -1,0 +1,6 @@
+- Place the statements.pdf file with the newest version of the problem statement 
+- Create a folder for each problem (follow the exact format! You need all the files!)
+- Update problem.xml with the correct parameters
+- Update check.cpp
+- Make sure the correct input file (for the contestants) is placed under the tests folder and named 01
+- Update proco.xml with the list of all problems

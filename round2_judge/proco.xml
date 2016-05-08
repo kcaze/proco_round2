@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<contest url="https://polygon.codeforces.com/c/4100">
+    <names>
+        <name language="english" value="ProCo Round 2"/>
+    </names>
+    <statements>
+        <statement language="english" type="application/pdf" url="https://polygon.codeforces.com/c/4100/english/statements.pdf"/>
+    </statements>
+    <problems>
+	    <problem index="a" url="round2/outputonly"/>
+    </problems>
+</contest>
