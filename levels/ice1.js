@@ -28,7 +28,8 @@ var ice =
     ],
     scoreFunction : function (spiders, moves) {
       return Math.pow(spiders, 5)/(moves+1);
-    }
+    },
+    targetScore : 1.45
   }
 
 for (var ii = 0; ii < ice.width; ii++) {

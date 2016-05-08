@@ -26,7 +26,8 @@ var ice =
     walls: [],
     scoreFunction : function (spiders, moves) {
       return (spiders*spiders)/(moves+1);
-    }
+    },
+    targetScore : 9.56
   }
 
 for (var ii = 0; ii < n; ii++) {

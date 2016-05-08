@@ -18,7 +18,8 @@ var maximizeFunction =
       var mod = Math.floor(Math.pow(2, spiders));
       var x = moves%mod + mod;
       return Math.tan(x);
-    }
+    },
+    targetScore : 40500
   }
 
 function flymove() { return {x:this.x, y:this.y}; }
