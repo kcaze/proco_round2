@@ -23,7 +23,8 @@ var trafficLight =
     ],
     scoreFunction : function (spiders, moves, waits) {
       return (spiders*spiders)/(moves-waits+1);
-    }
+    },
+    targetScore : 4
   }
 function trafficLightFly(dir,x,y) {
   return {

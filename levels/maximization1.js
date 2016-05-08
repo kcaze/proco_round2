@@ -17,7 +17,8 @@ var maximizeFunction =
     scoreFunction : function (spiders, moves) {
       var x = 2*spiders - moves;
       return -(x*x) + 144*x + 10;
-    }
+    },
+    targetScore: 5194,
   }
 
 for (var ii = 0; ii < maximizeFunction.width; ii++) {

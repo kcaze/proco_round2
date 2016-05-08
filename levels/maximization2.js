@@ -16,7 +16,8 @@ var maximizeFunction =
     walls: [],
     scoreFunction : function (spiders, moves) {
       return spiders*Math.pow(2, -moves/2048);
-    }
+    },
+    targetScore: 5.5
   }
 
 for (var ii = 0; ii < maximizeFunction.width; ii++) {
