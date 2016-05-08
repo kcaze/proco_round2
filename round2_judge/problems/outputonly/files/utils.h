@@ -10,6 +10,26 @@ typedef pair<int,int> pii;
 typedef long long int LL;
 typedef double LF;
 
+bool validDirection(char c) {
+  return c == 'L' || c == 'U' || c == 'R' || c == 'D' || c == 'W';
+}
+
+int directionToIndex(char c) {
+  if (c == 'L') {
+    return 0;
+  } else if (c == 'U') {
+    return 1;
+  } else if (c == 'R') {
+    return 2;
+  } else if (c == 'D') {
+    return 3;
+  } else {
+    return 4;
+  }
+}
+
+void endProgram(double score);
+
 class FileReader {
   FILE *f;
   bool isRead;
@@ -29,6 +49,9 @@ public:
     char c;
     if (ignoreWhiteSpace) fscanf(f, " %c", &c);
     else fscanf(f, "%c", &c);
+    if (!validDirection(c)) {
+      endProgram(0);
+    }
     isRead = true;
     return c;
   }
@@ -62,20 +85,3 @@ void endProgram(double score) {
   exit(0);
 }
 
-bool validDirection(char c) {
-  return c == 'L' || c == 'U' || c == 'R' || c == 'D' || c == 'W';
-}
-
-int directionToIndex(char c) {
-  if (c == 'L') {
-    return 0;
-  } else if (c == 'U') {
-    return 1;
-  } else if (c == 'R') {
-    return 2;
-  } else if (c == 'D') {
-    return 3;
-  } else {
-    return 4;
-  }
-}
