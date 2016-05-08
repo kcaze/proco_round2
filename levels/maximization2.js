@@ -14,8 +14,8 @@ var maximizeFunction =
     },
     flies : [],
     walls: [],
-    scoreFunction : function (flies, moves) {
-      return flies*Math.pow(2, -moves/2048);
+    scoreFunction : function (spiders, moves) {
+      return spiders*Math.pow(2, -moves/2048);
     }
   }
 

@@ -14,8 +14,8 @@ var maximizeFunction =
     },
     flies : [],
     walls: [],
-    scoreFunction : function (flies, moves) {
-      var mod = Math.floor(Math.pow(2, flies));
+    scoreFunction : function (spiders, moves) {
+      var mod = Math.floor(Math.pow(2, spiders));
       var x = moves%mod + mod;
       return Math.tan(x);
     }

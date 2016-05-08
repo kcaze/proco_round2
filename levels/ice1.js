@@ -26,8 +26,8 @@ var ice =
       {x:3,y:8}, {x:14,y:9}, {x:8,y:10}, {x:6,y:11},
       {x:10,y:11}
     ],
-    scoreFunction : function (flies, moves) {
-      return Math.pow(flies, 5)/(moves+1);
+    scoreFunction : function (spiders, moves) {
+      return Math.pow(spiders, 5)/(moves+1);
     }
   }
 

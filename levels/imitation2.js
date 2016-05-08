@@ -24,8 +24,8 @@ var level =
     // List of walls, see below for example wall.
     walls: [],
     // Objective function, takes in number of flies eaten and moves made
-    scoreFunction : function (flies, moves, waits) {
-      return Math.exp((flies - moves * moves / 20) / 200);
+    scoreFunction : function (spiders, moves, waits) {
+      return Math.exp((spiders - moves * moves / 20) / 200);
     },
 
     inMap: function(x, y) {

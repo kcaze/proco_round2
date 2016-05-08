@@ -2672,8 +2672,8 @@ var ice =
     {x:56,y:98, move: flymove},
     {x:98,y:98, move: flymove},
     ],
-    scoreFunction : function (flies, moves) {
-      return (flies*flies)/(moves+1);
+    scoreFunction : function (spiders, moves) {
+      return (spiders*spiders)/(moves+1);
     }
   }
 game.levels.push(ice);

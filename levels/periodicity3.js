@@ -14,8 +14,8 @@ var trafficLight =
     },
     flies : [],
     walls: [],
-    scoreFunction : function (flies, moves, waits) {
-      return 4*flies - moves;
+    scoreFunction : function (spiders, moves, waits) {
+      return 4*spiders - moves;
     }
   }
 function trafficLightFly(dir,x,y) {

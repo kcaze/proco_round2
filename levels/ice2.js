@@ -24,8 +24,8 @@ var ice =
     },
     flies : [],
     walls: [],
-    scoreFunction : function (flies, moves) {
-      return (flies*flies)/(moves+1);
+    scoreFunction : function (spiders, moves) {
+      return (spiders*spiders)/(moves+1);
     }
   }
 
