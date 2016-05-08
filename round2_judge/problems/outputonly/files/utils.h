@@ -2,6 +2,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
+#include <cstdio>
 #include <cassert>
 using namespace std;
 
@@ -39,20 +40,22 @@ public:
 };
 
 //inf is Input, ouf is output, ans is user submission
-FileReader inf, ouf, ans;
+FileReader ouf, ans;
+FILE *inf;
+
 int DX[5] = {-1, 0, 0, 1, 0};
 int DY[5] = {0, -1, 1, 0, 0};
 
 void init(int argc, char * argv[]) {
   assert(argc == 4);
-  inf = FileReader(argv[1]);
+  inf = fopen(argv[1], "r");
   ouf = FileReader(argv[2]);
   ans = FileReader(argv[3]);
   ans.readChar();
 }
 
 void endProgram(double score) {
-  inf.close();
+  fclose(inf);
   ouf.close();
   ans.close();
   printf("%.2lf\n",score);
