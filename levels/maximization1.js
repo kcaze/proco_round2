@@ -16,7 +16,7 @@ var maximizeFunction =
     walls: [],
     scoreFunction : function (spiders, moves) {
       var x = 2*spiders - moves;
-      return -(x*x) + 144*x + 10;
+      return Math.max(-(x*x) + 144*x + 10, 0);
     },
     targetScore: 5194,
   }

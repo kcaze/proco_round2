@@ -17,7 +17,7 @@ var maximizeFunction =
     scoreFunction : function (spiders, moves) {
       var mod = Math.floor(Math.pow(2, spiders));
       var x = moves%mod + mod;
-      return Math.tan(x);
+      return Math.max(Math.tan(x), 0);
     },
     targetScore : 40500
   }
