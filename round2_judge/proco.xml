@@ -7,6 +7,6 @@
         <statement language="english" type="application/pdf" url="https://polygon.codeforces.com/c/4100/english/statements.pdf"/>
     </statements>
     <problems>
-	    <problem index="a" url="round2/outputonly"/>
+	    <problem index="a" url="round2/periodicity1"/>
     </problems>
 </contest>
