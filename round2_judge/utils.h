@@ -48,14 +48,14 @@ public:
   char readChar(bool ignoreWhiteSpace = true) {
     char c;
     if (ignoreWhiteSpace) {
-      fscanf(f, " %c ", &c);
+      fscanf(f, " %c", &c);
     } else {
       fscanf(f, "%c", &c);
     }
-    if (!validDirection(c)) {
+    isRead = true;
+    if (!eof() && !validDirection(c)) {
       endProgram(0);
     }
-    isRead = true;
     return c;
   }
 

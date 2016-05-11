@@ -111,8 +111,9 @@ function exportLog() {
   for (var ii = 0; ii < log_.length; ii++) {
     log_[ii] = {'left':'L','up':'U','right':'R','down':'D','wait':'W'}[log_[ii]];
   }
+  console.log("Leading unknow char:");
   var logString = log_.join('\n');
-  var blob = new Blob([logString], {type:'text/plain;charset=utf-8'});
+  var blob = new Blob([logString]);
   saveAs(blob, 'proco_round2_' + currentLevel.name + '_log.txt');
 }
 
