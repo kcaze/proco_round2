@@ -20,7 +20,7 @@ int moves = 0;
 int waits = 0;
 int W, H, nSpiders;
 bool wall[500][500];
-double opt = 1000.0;
+double opt = 35083798.476208895;
 
 void eatSpiders() {
   for (int i = 0; i < nSpiders; i++)
@@ -68,8 +68,9 @@ int main(int argc, char *argv[]) {
     fscanf(inf, "%d%d", &spiders[i].x, &spiders[i].y);
   }
 
+  char c;
   while (!ans.eof()) {
-    char c = ans.readChar(); 
+    c = ans.readChar(); 
     if (c == 0) break;
 
     int index = directionToIndex(c);
