@@ -93,5 +93,5 @@ int main(int argc, char *argv[]) {
     moves++;
     if (index == 4) waits++;
   }
-  endProgram((spidersCaught*spidersCaught)/((double)moves - waits + 1) / opt);
+  endProgram((5*spidersCaught - moves) / opt);
 }

@@ -1,4 +1,4 @@
-﻿12 9
+12 9
 5 7
 69
 0 0
@@ -87,3 +87,4 @@ L L L R R R R R R L L L
 L L L L R R R R
 1 6 10
 R R R R R L L L L L
+
