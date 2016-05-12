@@ -1,4 +1,7 @@
 #include <cstdio>
+#include <algorithm>
+using namespace std;
+int maxx[5000], minx[5000];
 
 int main() {
   freopen("imitation2.txt", "r", stdin);
@@ -19,7 +22,11 @@ int main() {
       minx[y] = min(minx[y], x);
     }
   }
-  for (int y = 100; y <= 199; y++) {
-
+  for (int y = 100; y <= 198; y++) {
+    if (maxx[y] == maxx[y+1])
+      printf("D\n");
+    else {
+      printf("R\nL\nL\nR\nD\n");
+    }
   }
 }

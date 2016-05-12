@@ -78,5 +78,5 @@ int main(int argc, char *argv[]) {
     moves++;
     if (index == 4) waits++;
   }
-  endProgram((spiders * (0.5 + exp(-moves/5000.0) / 2)) / opt);
+  endProgram((spidersCaught * (0.5 + exp(-moves/5000.0) / 2)) / opt);
 }
