@@ -105,7 +105,5 @@ int main(int argc, char *argv[]) {
     if (index == 4) waits++;
   }
   double score = (spidersCaught*spidersCaught)/((double)moves+1);
-  cout << spidersCaught << endl;
-  cout << score << endl;
   endProgram(score / opt);
 }

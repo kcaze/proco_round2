@@ -82,6 +82,5 @@ int main(int argc, char *argv[]) {
     if (index == 4) waits++;
   }
   double score = spidersCaught * pow(2, -((double)moves)/2048);
-  cout << score << endl;
   endProgram(score / opt);
 }
