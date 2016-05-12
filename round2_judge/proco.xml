@@ -8,5 +8,16 @@
     </statements>
     <problems>
 	    <problem index="a" url="round2/periodicity1"/>
+      <problem index="b" url="round2/periodicity2"/>
+      <problem index="c" url="round2/periodicity3"/>
+      <problem index="d" url="round2/reaction1"/>
+      <problem index="e" url="round2/reaction2"/>
+      <problem index="f" url="round2/reaction3"/>
+      <problem index="g" url="round2/reflection1"/>
+      <problem index="h" url="round2/reflection2"/>
+      <problem index="i" url="round2/reflection3"/>
+      <problem index="j" url="round2/imitation1"/>
+      <problem index="k" url="round2/imitation2"/>
+      <problem index="l" url="round2/imitation3"/>
     </problems>
 </contest>
