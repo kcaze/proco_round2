@@ -3,7 +3,7 @@
 #include <set>
 #include <vector>
 #include <string>
-#include "utils.h"
+#include "../../../utils.h"
 using namespace std;
 
 struct Coordinate {
@@ -51,7 +51,8 @@ int main(int argc, char *argv[]) {
   for (int i = 0; i < nSpiders; i++) {
     char d[3];
     fscanf(inf, "%d%d%s", &spiders[i].x, &spiders[i].y, d);
-    wall[spiders[i].x][spiders[i].y] = true;
+    if (i > 0)
+      wall[spiders[i].x][spiders[i].y] = true;
     moveTo[i] = directionToIndex(d[0]);
   }
 
@@ -65,5 +66,5 @@ int main(int argc, char *argv[]) {
     moves++;
     if (index == 4) waits++;
   }
-  endProgram(exp((double)(spidersCaught*spidersCaught-moves) / 100) / opt);
+  endProgram(exp((spidersCaught*spidersCaught-moves) / 100.0) / opt);
 }

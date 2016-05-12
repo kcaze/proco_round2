@@ -13,6 +13,7 @@
             <time-limit>2000</time-limit>
             <memory-limit>268435456</memory-limit>
             <test-count>1</test-count>
+            <score>200</score>
             <input-path-pattern>tests/%02d</input-path-pattern>
             <answer-path-pattern>tests/%02d.a</answer-path-pattern>
             <tests>

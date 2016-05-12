@@ -78,5 +78,6 @@ int main(int argc, char *argv[]) {
     moves++;
     if (index == 4) waits++;
   }
+  fprintf(stderr, "moves:%d\n", moves);
   endProgram(exp((spidersCaught-(double)moves/3) / 2.0) / opt);
 }
