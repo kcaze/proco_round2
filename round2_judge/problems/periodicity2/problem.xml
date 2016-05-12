@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <problem revision="4" short-name="printstring" url="https://polygon.codeforces.com/p/ericxu0/printstring">
     <names>
-        <name language="english" value="Zone of Periodicity: Level 1"/>
+        <name language="english" value="Zone of Periodicity: Level 2"/>
     </names>
     <statements>
         <statement charset="UTF-8" language="english" path="statements/english/problem.tex" type="application/x-tex"/>
