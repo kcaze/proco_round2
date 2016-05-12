@@ -28,7 +28,7 @@ int moves = 0;
 int waits = 0;
 int W, H, nSpiders;
 bool wall[500][500];
-double opt = 4.0;
+double opt = 295.0;
 
 bool inMap(int x, int y) {
   return 0 <= x && x < W && 0 <= y && y < H;
