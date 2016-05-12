@@ -83,7 +83,7 @@ void endProgram(double score) {
   fclose(inf);
   ouf.close();
   ans.close();
-  printf("%.2lf\n",score);
+  printf("%.2lf\n",max(min(score,1.0),0.0));
   exit(0);
 }
 
