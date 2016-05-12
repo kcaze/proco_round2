@@ -22,5 +22,8 @@
       <problem index="m" url="round2/maximization1"/>
       <problem index="n" url="round2/maximization2"/>
       <problem index="o" url="round2/maximization3"/>
+      <problem index="p" url="round2/ice1"/>
+      <problem index="q" url="round2/ice2"/>
+      <problem index="r" url="round2/ice3"/>
     </problems>
 </contest>
