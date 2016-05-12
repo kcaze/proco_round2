@@ -19,5 +19,8 @@
       <problem index="j" url="round2/imitation1"/>
       <problem index="k" url="round2/imitation2"/>
       <problem index="l" url="round2/imitation3"/>
+      <problem index="m" url="round2/maximization1"/>
+      <problem index="n" url="round2/maximization2"/>
+      <problem index="o" url="round2/maximization3"/>
     </problems>
 </contest>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="4" short-name="printstring" url="https://polygon.codeforces.com/p/ericxu0/printstring">
+    <names>
+        <name language="english" value="Zone of Maximization: Level 1"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+        <statement charset="UTF-8" language="english" path="statements/.html/english/problem.html" type="text/html"/>
+    </statements>
+    <judging cpu-name="OutputOnly" cpu-speed="3600" input-file="" output-file="">
+        <testset name="tests">
+            <time-limit>2000</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>1</test-count>
+            <score>100</score>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test method="manual"/>
+            </tests>
+        </testset>
+    </judging>
+</problem>
