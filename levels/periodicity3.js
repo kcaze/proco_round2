@@ -16,7 +16,8 @@ var trafficLight =
     walls: [],
     scoreFunction : function (spiders, moves, waits) {
       return 4*spiders - moves;
-    }
+    },
+    targetScore: 4300,
   }
 function trafficLightFly(dir,x,y) {
   var ii = {'right':0,'down':1,'left':2,'up':3};
