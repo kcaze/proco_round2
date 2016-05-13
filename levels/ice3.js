@@ -2674,7 +2674,8 @@ var ice =
     ],
     scoreFunction : function (spiders, moves) {
       return (spiders*spiders)/(moves+1);
-    }
+    },
+    targetScore: 180,
   }
 game.levels.push(ice);
 })();
