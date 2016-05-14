@@ -28,6 +28,7 @@ var level =
     scoreFunction : function (spiders, moves) {
       return Math.exp((spiders * spiders - moves) / 1000.);
     },
+    targetScore: 32.65506585362129
   };
 
 var genFly = function() {

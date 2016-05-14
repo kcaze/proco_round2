@@ -20,7 +20,7 @@ int moves = 0;
 int waits = 0;
 int W, H, nSpiders;
 bool wall[500][500];
-double opt = 14.391916095149902;
+double opt = 17.002039940094015;
 
 void eatSpiders() {
   for (int i = 0; i < nSpiders; i++)
@@ -78,6 +78,5 @@ int main(int argc, char *argv[]) {
     moves++;
     if (index == 4) waits++;
   }
-  fprintf(stderr, "moves:%d\n", moves);
   endProgram(exp((spidersCaught-(double)moves/3) / 2.0) / opt);
 }

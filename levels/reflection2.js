@@ -34,6 +34,7 @@ var level =
     scoreFunction : function (spiders, moves, waits) {
       return (2 * spiders - (moves - waits)) * (0.5 + Math.exp(-waits/ 300) / 2);
     },
+    targetScore: 650.0,
 
     inMap: function(x, y) {
       return x >= 0 && y >= 0 && x < this.width && y < this.height;

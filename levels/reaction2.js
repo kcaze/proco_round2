@@ -28,6 +28,7 @@ var level =
     scoreFunction : function (spiders, moves) {
       return 2 * spiders - moves;
     },
+    targetScore: 677.0
   };
 
 level.frog.y = level.height - 1;
