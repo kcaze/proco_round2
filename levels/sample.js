@@ -21,8 +21,8 @@ var exampleLevel =
     // List of walls, see below for example wall.
     walls: [],
     // Objective function, takes in number of flies eaten and moves made
-    scoreFunction : function (flies, moves) {
-      return flies / (moves + 1);
+    scoreFunction : function (spiders, moves) {
+      return spiders / (moves + 1);
     },
     targetScore: 0.125,
   };
