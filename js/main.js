@@ -63,8 +63,6 @@ function pushLog(move) {
   document.getElementById('score').innerHTML = currentLevel.score;
   document.getElementById('scoreFunction').innerHTML = currentLevel.scoreFunction.toString();
   document.getElementById('targetScore').innerHTML = currentLevel.targetScore.toString();
-  var recentMoves = log.slice(Math.max(log.length-5, 0)).join('<br>');
-  document.getElementById('recentMoves').innerHTML = recentMoves;
 
   document.getElementById('currentMove').innerHTML = logNum;
   document.getElementById('numMoves').innerHTML = log.length;
@@ -91,8 +89,6 @@ function setLog(newLog, newLogNum) {
   document.getElementById('score').innerHTML = currentLevel.score;
   document.getElementById('scoreFunction').innerHTML = currentLevel.scoreFunction.toString();
   document.getElementById('targetScore').innerHTML = currentLevel.targetScore.toString();
-  var recentMoves = log.slice(Math.max(log.length-5, 0)).join('<br>');
-  document.getElementById('recentMoves').innerHTML = recentMoves;
 
   document.getElementById('currentMove').innerHTML = logNum;
   document.getElementById('numMoves').innerHTML = log.length;
