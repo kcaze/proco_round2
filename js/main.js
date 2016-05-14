@@ -40,6 +40,15 @@ document.addEventListener('keydown', function (e) {
   e.stopPropagation();
 });
 
+document.addEventListener('keypress', function (e) {
+  var keys = { 32:'wait', 37:'left', 38:'up', 39:'right', 40:'down' };
+
+  if (!keys[e.keyCode]) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+});
+
 // Log functions
 function pushLog(move) {
   log.push(move);
