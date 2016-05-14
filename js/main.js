@@ -107,9 +107,9 @@ function readLog(logElement) {
 }
 
 function exportLog() {
-  var log_ = log;
-  for (var ii = 0; ii < log_.length; ii++) {
-    log_[ii] = {'left':'L','up':'U','right':'R','down':'D','wait':'W'}[log_[ii]];
+  var log_ = [];
+  for (var ii = 0; ii < log.length; ii++) {
+    log_.push({'left':'L','up':'U','right':'R','down':'D','wait':'W'}[log[ii]]);
   }
   console.log("Leading unknow char:");
   var logString = log_.join('\n');
